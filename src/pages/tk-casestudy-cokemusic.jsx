@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink } from 'react-router-dom';
 
 const RESULTS = [
@@ -15,42 +15,10 @@ const NAV_PATH = { Work: "/work", About: "/about", Contact: "/contact" };
 export default function CaseStudyCokeMusic() {
   const [loaded, setLoaded] = useState(false);
   const [activeNav, setActiveNav] = useState(null);
-  const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(true);
-  const [progress, setProgress] = useState(0);
-  const videoRef = useRef(null);
-
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 100);
     return () => clearTimeout(t);
   }, []);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (playing) { videoRef.current.pause(); } else { videoRef.current.play(); }
-    setPlaying(!playing);
-  };
-
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !muted;
-    setMuted(!muted);
-  };
-
-  const handleTimeUpdate = () => {
-    if (!videoRef.current) return;
-    const pct = (videoRef.current.currentTime / videoRef.current.duration) * 100;
-    setProgress(isNaN(pct) ? 0 : pct);
-  };
-
-  const handleSeek = (e) => {
-    if (!videoRef.current) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const pct = (e.clientX - rect.left) / rect.width;
-    videoRef.current.currentTime = pct * videoRef.current.duration;
-  };
-
-  const handleEnded = () => setPlaying(false);
 
   return (
     <div style={{ background: "#0D0D0D", minHeight: "100vh", fontFamily: "'DM Mono', 'Courier New', monospace", color: "#F0EDE8", overflowX: "hidden", position: "relative" }}>
@@ -94,56 +62,17 @@ export default function CaseStudyCokeMusic() {
           </div>
         </div>
 
-        {/* VIDEO PLAYER */}
+        {/* VIDEO */}
         <div style={{ padding: "0 48px", marginBottom: "100px", opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 0.45s" }}>
           <div style={{ maxWidth: "1100px" }}>
-            <div style={{ position: "relative", background: "#111", overflow: "hidden" }}>
-              <video
-                ref={videoRef}
-                src="/Coke X Kpop Tour Final V4.mp4"
-                muted
-                playsInline
-                onTimeUpdate={handleTimeUpdate}
-                onEnded={handleEnded}
-                style={{ width: "100%", display: "block", maxHeight: "620px", objectFit: "cover" }}
+            <div style={{ position: "relative", width: "100%", paddingTop: "56.25%", background: "#111", overflow: "hidden" }}>
+              <iframe
+                src="https://www.youtube.com/embed/6oR9vJp5qSg"
+                title="Coke Music Promo — Campaign Hype Reel"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
               />
-
-              {/* Play overlay */}
-              {!playing && (
-                <div
-                  onClick={togglePlay}
-                  style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(13,13,13,0.45)", cursor: "pointer", transition: "background 0.2s" }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = "rgba(13,13,13,0.3)"}
-                  onMouseLeave={(e) => e.currentTarget.style.background = "rgba(13,13,13,0.45)"}
-                >
-                  <div style={{ width: "72px", height: "72px", border: "1px solid #FF5C1A", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <div style={{ width: 0, height: 0, borderTop: "14px solid transparent", borderBottom: "14px solid transparent", borderLeft: "22px solid #FF5C1A", marginLeft: "6px" }} />
-                  </div>
-                </div>
-              )}
-
-              {/* Controls */}
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "16px 20px 14px", background: "linear-gradient(to top, rgba(13,13,13,0.9) 0%, transparent 100%)", display: "flex", flexDirection: "column", gap: "10px" }}>
-                <div onClick={handleSeek} style={{ height: "2px", background: "rgba(240,237,232,0.15)", cursor: "pointer", position: "relative" }}>
-                  <div style={{ position: "absolute", top: 0, left: 0, height: "100%", width: `${progress}%`, background: "#FF5C1A", transition: "width 0.1s linear" }} />
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                  <button onClick={togglePlay} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}>
-                    {playing ? (
-                      <div style={{ display: "flex", gap: "3px" }}>
-                        <div style={{ width: "3px", height: "14px", background: "#FF5C1A" }} />
-                        <div style={{ width: "3px", height: "14px", background: "#FF5C1A" }} />
-                      </div>
-                    ) : (
-                      <div style={{ width: 0, height: 0, borderTop: "7px solid transparent", borderBottom: "7px solid transparent", borderLeft: "12px solid #FF5C1A", marginLeft: "2px" }} />
-                    )}
-                  </button>
-                  <button onClick={toggleMute} style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}>
-                    <span style={{ fontSize: "9px", letterSpacing: "0.15em", textTransform: "uppercase", color: muted ? "rgba(240,237,232,0.3)" : "#FF5C1A", fontFamily: "'DM Mono', monospace", transition: "color 0.2s" }}>{muted ? "Unmute" : "Mute"}</span>
-                  </button>
-                  <span style={{ fontSize: "9px", letterSpacing: "0.1em", color: "rgba(240,237,232,0.3)", fontFamily: "'DM Mono', monospace", marginLeft: "auto" }}>Coke x K-POP Tour — Hype Reel</span>
-                </div>
-              </div>
             </div>
             <p style={{ fontSize: "10px", letterSpacing: "0.12em", color: "rgba(240,237,232,0.2)", fontFamily: "'DM Mono', monospace", marginTop: "12px" }}>Campaign hype reel — Coke Music Promo, ASP 2021–2024</p>
           </div>
