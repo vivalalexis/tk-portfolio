@@ -151,14 +151,15 @@ export default function TKPortfolio() {
         </span>
 
         <h1 style={{
-          fontSize: "clamp(36px, 6vw, 84px)", fontWeight: "400", lineHeight: 1.05,
-          margin: "0 0 32px", maxWidth: "960px", letterSpacing: "-0.025em",
+          fontSize: "clamp(34px, 5.4vw, 76px)", fontWeight: "400", lineHeight: 1.08,
+          margin: "0 0 32px", maxWidth: "900px", letterSpacing: "-0.025em",
           fontFamily: FONTS.display,
           opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)",
           transition: "opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s",
         }}>
-          Strategic enough to shape the brief. Creative enough to{" "}
-          <em style={{ color: COLORS.orange, fontStyle: "italic", fontWeight: 400 }}>make it land</em>.
+          Strategic enough to shape the brief.<br />
+          Creative enough to{" "}
+          <em style={{ color: COLORS.orange, fontStyle: "italic", fontWeight: 400, whiteSpace: "nowrap" }}>make it land</em>.
         </h1>
 
         <p style={{
@@ -209,7 +210,7 @@ export default function TKPortfolio() {
             Work shipped with
           </span>
           <div style={{ display: "flex", gap: "40px", flexWrap: "wrap", alignItems: "center" }}>
-            {["Coca-Cola", "Deliveroo", "Keri", "Wilkins", "Braze"].map((brand) => (
+            {["Coca-Cola", "Minute Maid", "Deliveroo", "Lazada", "Keri", "Wilkins", "Pump", "Braze"].map((brand) => (
               <span key={brand} style={{
                 fontSize: "14px", fontFamily: FONTS.display, fontWeight: 500,
                 color: "rgba(240,237,232,0.55)", letterSpacing: "0.01em",
@@ -254,7 +255,7 @@ export default function TKPortfolio() {
             <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.orange, fontFamily: FONTS.mono, display: "block", marginBottom: "24px" }}>About</span>
             <h2 style={{ fontSize: "clamp(32px, 4.5vw, 56px)", fontWeight: 400, lineHeight: 1.05, margin: "0 0 24px", letterSpacing: "-0.025em", fontFamily: FONTS.display }}>
               12 years.<br />
-              <em style={{ color: COLORS.teal, fontStyle: "italic", fontWeight: 400 }}>No handoffs.</em><br />
+              <em style={{ color: COLORS.teal, fontStyle: "italic", fontWeight: 400 }}>Strategy to ship.</em><br />
               No gap.
             </h2>
           </div>
