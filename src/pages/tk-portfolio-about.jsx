@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from 'react-router-dom';
+import { FONTS, COLORS, FONT_IMPORT } from '../theme.js';
 
 const CAREER = [
   {
@@ -88,9 +89,9 @@ export default function TKAbout() {
 
   return (
     <div style={{
-      background: "#0D0D0D", minHeight: "100vh",
-      fontFamily: "'DM Mono', 'Courier New', monospace",
-      color: "#F0EDE8", overflowX: "hidden", position: "relative",
+      background: COLORS.bg, minHeight: "100vh",
+      fontFamily: FONTS.body,
+      color: COLORS.text, overflowX: "hidden", position: "relative",
     }}>
       <div style={{
         position: "fixed", inset: 0,
@@ -106,47 +107,46 @@ export default function TKAbout() {
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
         padding: "24px 48px", display: "flex", alignItems: "center", justifyContent: "space-between",
-        borderBottom: "0.5px solid rgba(240,237,232,0.08)",
+        borderBottom: `0.5px solid ${COLORS.border}`,
         backdropFilter: "blur(12px)", background: "rgba(13,13,13,0.85)",
         opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(-8px)",
         transition: "opacity 0.6s ease, transform 0.6s ease",
       }}>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <div style={{ fontSize: "22px", fontWeight: "700", letterSpacing: "0.12em", color: "#F0EDE8", fontFamily: "'DM Mono', monospace", cursor: "pointer" }}>
-            TK<span style={{ color: "#00C4B4", marginLeft: "2px" }}>.</span>
+          <div style={{ fontSize: "22px", fontWeight: "700", letterSpacing: "0.12em", color: COLORS.text, fontFamily: FONTS.mono, cursor: "pointer" }}>
+            TK<span style={{ color: COLORS.teal, marginLeft: "2px" }}>.</span>
           </div>
         </Link>
         <div style={{ display: "flex", gap: "40px", alignItems: "center" }}>
           {["Work", "About", "Contact"].map((item) => (
             <NavLink key={item} to={NAV_PATH[item]} style={({ isActive }) => ({
-              color: isActive ? "#F0EDE8" : activeNav === item ? "#00C4B4" : "rgba(240,237,232,0.5)",
+              color: isActive ? COLORS.text : activeNav === item ? COLORS.teal : "rgba(240,237,232,0.5)",
               fontSize: "12px", letterSpacing: "0.18em", textTransform: "uppercase",
               cursor: "pointer", transition: "color 0.2s ease", padding: "4px 0",
-              fontFamily: "'DM Mono', monospace", textDecoration: "none", display: "inline-block",
+              fontFamily: FONTS.mono, textDecoration: "none", display: "inline-block",
             })} onMouseEnter={() => setActiveNav(item)} onMouseLeave={() => setActiveNav(null)}>{item}</NavLink>
           ))}
           <a href="mailto:trishakuek@gmail.com" style={{
-            background: "#00C4B4", color: "#0D0D0D", fontSize: "11px", letterSpacing: "0.18em",
+            background: COLORS.teal, color: COLORS.bg, fontSize: "11px", letterSpacing: "0.18em",
             textTransform: "uppercase", padding: "10px 20px", textDecoration: "none",
-            fontWeight: "700", fontFamily: "'DM Mono', monospace", transition: "background 0.2s ease",
+            fontWeight: "700", fontFamily: FONTS.mono, transition: "background 0.2s ease",
           }}
-            onMouseEnter={(e) => e.target.style.background = "#FF5C1A"}
-            onMouseLeave={(e) => e.target.style.background = "#00C4B4"}>
+            onMouseEnter={(e) => e.target.style.background = COLORS.orange}
+            onMouseLeave={(e) => e.target.style.background = COLORS.teal}>
             Get in touch
           </a>
         </div>
       </nav>
 
       <main style={{ paddingTop: "140px", paddingBottom: "120px", position: "relative", zIndex: 1 }}>
-
         <div style={{ padding: "0 48px", marginBottom: "80px" }}>
           <div style={{
-            borderTop: "0.5px solid rgba(240,237,232,0.1)", paddingTop: "32px",
+            borderTop: `0.5px solid rgba(240,237,232,0.1)`, paddingTop: "32px",
             display: "flex", alignItems: "baseline", justifyContent: "space-between",
             opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease 0.2s",
           }}>
-            <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#FF5C1A", fontFamily: "'DM Mono', monospace" }}>About</span>
-            <span style={{ fontSize: "10px", letterSpacing: "0.1em", color: "rgba(240,237,232,0.2)", fontFamily: "'DM Mono', monospace" }}>Sydney, AU · Full working rights</span>
+            <span style={{ fontSize: "10px", letterSpacing: "0.22em", textTransform: "uppercase", color: COLORS.orange, fontFamily: FONTS.mono }}>About</span>
+            <span style={{ fontSize: "10px", letterSpacing: "0.1em", color: "rgba(240,237,232,0.3)", fontFamily: FONTS.mono }}>Sydney, AU · Full working rights</span>
           </div>
         </div>
 
@@ -156,23 +156,23 @@ export default function TKAbout() {
           opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(24px)",
           transition: "opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s",
         }}>
-          <div style={{ maxWidth: "860px" }}>
-            <div style={{ width: loaded ? "60px" : "0px", height: "2px", background: "#00C4B4", marginBottom: "40px", transition: "width 0.8s ease 0.5s" }} />
-            <p style={{
-              fontSize: "clamp(24px, 4vw, 52px)", fontWeight: "400", lineHeight: 1.15,
-              letterSpacing: "-0.025em", fontFamily: "'DM Mono', monospace", margin: "0 0 36px", color: "#F0EDE8",
+          <div style={{ maxWidth: "920px" }}>
+            <div style={{ width: loaded ? "60px" : "0px", height: "2px", background: COLORS.teal, marginBottom: "40px", transition: "width 0.8s ease 0.5s" }} />
+            <h1 style={{
+              fontSize: "clamp(36px, 6vw, 76px)", fontWeight: 400, lineHeight: 1.05,
+              letterSpacing: "-0.03em", fontFamily: FONTS.display, margin: "0 0 40px", color: COLORS.text,
             }}>
               Most marketers can brief.<br />
-              Fewer can <span style={{ color: "#00C4B4" }}>build</span>.<br />
-              I do <span style={{ color: "#FF5C1A" }}>both</span>.
-            </p>
-            <p style={{ fontSize: "clamp(14px, 1.5vw, 17px)", color: "rgba(240,237,232,0.5)", lineHeight: 1.85, maxWidth: "620px", fontFamily: "'DM Mono', monospace", margin: "0 0 20px" }}>
+              Fewer can <em style={{ color: COLORS.teal, fontStyle: "italic", fontWeight: 400 }}>build</em>.<br />
+              I do <em style={{ color: COLORS.orange, fontStyle: "italic", fontWeight: 400 }}>both</em>.
+            </h1>
+            <p style={{ fontSize: "clamp(15px, 1.5vw, 18px)", color: "rgba(240,237,232,0.7)", lineHeight: 1.7, maxWidth: "640px", fontFamily: FONTS.body, fontWeight: 300, margin: "0 0 20px" }}>
               Trisha Kuek. Senior marketing leader with 12+ years across agencies, hypergrowth tech, and global FMCG. Based in Sydney with full working rights in Australia.
             </p>
-            <p style={{ fontSize: "clamp(14px, 1.5vw, 17px)", color: "rgba(240,237,232,0.5)", lineHeight: 1.85, maxWidth: "620px", fontFamily: "'DM Mono', monospace", margin: "0 0 20px" }}>
+            <p style={{ fontSize: "clamp(15px, 1.5vw, 18px)", color: "rgba(240,237,232,0.7)", lineHeight: 1.7, maxWidth: "640px", fontFamily: FONTS.body, fontWeight: 300, margin: "0 0 20px" }}>
               I operate at the intersection of creative strategy and commercial systems — not just developing the brief, but building the mechanism that makes it executable at scale across markets with different maturity levels, media landscapes, and commercial contexts.
             </p>
-            <p style={{ fontSize: "clamp(14px, 1.5vw, 17px)", color: "rgba(240,237,232,0.5)", lineHeight: 1.85, maxWidth: "620px", fontFamily: "'DM Mono', monospace", margin: 0 }}>
+            <p style={{ fontSize: "clamp(15px, 1.5vw, 18px)", color: "rgba(240,237,232,0.7)", lineHeight: 1.7, maxWidth: "640px", fontFamily: FONTS.body, fontWeight: 300, margin: 0 }}>
               The gap between strategy and execution is where most work falls apart. I sit in that gap on purpose — and I leave capability behind, not just campaign outputs.
             </p>
           </div>
@@ -187,8 +187,8 @@ export default function TKAbout() {
 
         {/* PILLARS */}
         <div style={{ padding: "0 48px", marginBottom: "100px", opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 0.5s" }}>
-          <div style={{ borderTop: "0.5px solid rgba(240,237,232,0.1)", paddingTop: "32px", marginBottom: "40px" }}>
-            <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#00C4B4", fontFamily: "'DM Mono', monospace" }}>What makes me different</span>
+          <div style={{ borderTop: `0.5px solid rgba(240,237,232,0.1)`, paddingTop: "32px", marginBottom: "40px" }}>
+            <span style={{ fontSize: "10px", letterSpacing: "0.22em", textTransform: "uppercase", color: COLORS.teal, fontFamily: FONTS.mono }}>What makes me different</span>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: "rgba(240,237,232,0.06)" }}>
             {PILLARS.map((p, i) => <PillarCard key={i} pillar={p} />)}
@@ -197,52 +197,54 @@ export default function TKAbout() {
 
         {/* EXPERIENCE */}
         <div style={{ padding: "0 48px", marginBottom: "100px", opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 0.6s" }}>
-          <div style={{ borderTop: "0.5px solid rgba(240,237,232,0.1)", paddingTop: "32px", marginBottom: "48px", display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-            <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#00C4B4", fontFamily: "'DM Mono', monospace" }}>Experience</span>
-            <span style={{ fontSize: "10px", color: "rgba(240,237,232,0.2)", fontFamily: "'DM Mono', monospace", letterSpacing: "0.1em" }}>Click to expand</span>
+          <div style={{ borderTop: `0.5px solid rgba(240,237,232,0.1)`, paddingTop: "32px", marginBottom: "48px", display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
+            <span style={{ fontSize: "10px", letterSpacing: "0.22em", textTransform: "uppercase", color: COLORS.teal, fontFamily: FONTS.mono }}>Experience</span>
+            <span style={{ fontSize: "10px", color: "rgba(240,237,232,0.3)", fontFamily: FONTS.mono, letterSpacing: "0.1em" }}>Click to expand</span>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {CAREER.map((role, i) => (
               <RoleRow key={i} role={role} expanded={expandedRole === i} onToggle={() => setExpandedRole(expandedRole === i ? null : i)} isLast={i === CAREER.length - 1} />
             ))}
           </div>
-          <div style={{ marginTop: "48px", paddingTop: "32px", borderTop: "0.5px solid rgba(240,237,232,0.06)", display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
+          <div style={{ marginTop: "48px", paddingTop: "32px", borderTop: `0.5px solid rgba(240,237,232,0.06)`, display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
             <div>
-              <p style={{ fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(240,237,232,0.25)", fontFamily: "'DM Mono', monospace", marginBottom: "8px" }}>Singapore Management University</p>
-              <p style={{ fontSize: "14px", color: "rgba(240,237,232,0.5)", fontFamily: "'DM Mono', monospace" }}>Bachelor of Business Management — Marketing & Corporate Communications</p>
+              <p style={{ fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(240,237,232,0.35)", fontFamily: FONTS.mono, marginBottom: "8px" }}>Singapore Management University</p>
+              <p style={{ fontSize: "15px", color: "rgba(240,237,232,0.65)", fontFamily: FONTS.body, fontWeight: 400 }}>Bachelor of Business Management — Marketing & Corporate Communications</p>
             </div>
-            <span style={{ fontSize: "11px", color: "rgba(240,237,232,0.2)", fontFamily: "'DM Mono', monospace", letterSpacing: "0.1em", whiteSpace: "nowrap", marginLeft: "48px" }}>2011 — 2015</span>
+            <span style={{ fontSize: "11px", color: "rgba(240,237,232,0.25)", fontFamily: FONTS.mono, letterSpacing: "0.1em", whiteSpace: "nowrap", marginLeft: "48px" }}>2011 — 2015</span>
           </div>
         </div>
 
         {/* CONTACT STRIP */}
         <div style={{
-          margin: "0 48px", padding: "48px", border: "0.5px solid rgba(240,237,232,0.1)",
+          margin: "0 48px", padding: "48px", border: `0.5px solid rgba(240,237,232,0.1)`,
           display: "flex", alignItems: "center", justifyContent: "space-between",
           opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 0.8s",
         }}>
           <div>
-            <p style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: "400", letterSpacing: "-0.02em", fontFamily: "'DM Mono', monospace", margin: "0 0 8px" }}>Let's work together.</p>
-            <p style={{ fontSize: "13px", color: "rgba(240,237,232,0.35)", fontFamily: "'DM Mono', monospace", margin: 0 }}>Open to senior marketing, growth, and IMC roles.</p>
+            <p style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 400, letterSpacing: "-0.025em", fontFamily: FONTS.display, margin: "0 0 10px" }}>
+              Let's work <em style={{ color: COLORS.teal, fontStyle: "italic", fontWeight: 400 }}>together</em>.
+            </p>
+            <p style={{ fontSize: "14px", color: "rgba(240,237,232,0.5)", fontFamily: FONTS.body, fontWeight: 300, margin: 0 }}>Open to senior marketing, growth, and IMC roles.</p>
           </div>
           <div style={{ display: "flex", gap: "16px", flexShrink: 0, marginLeft: "48px" }}>
             <a href="mailto:trishakuek@gmail.com" style={{
-              background: "transparent", border: "1px solid #00C4B4", color: "#00C4B4",
+              background: "transparent", border: `1px solid ${COLORS.teal}`, color: COLORS.teal,
               fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase",
-              padding: "14px 28px", textDecoration: "none", fontFamily: "'DM Mono', monospace",
+              padding: "14px 28px", textDecoration: "none", fontFamily: FONTS.mono,
               transition: "all 0.2s ease", display: "inline-block", whiteSpace: "nowrap",
             }}
-              onMouseEnter={(e) => { e.target.style.background = "#00C4B4"; e.target.style.color = "#0D0D0D"; }}
-              onMouseLeave={(e) => { e.target.style.background = "transparent"; e.target.style.color = "#00C4B4"; }}>
+              onMouseEnter={(e) => { e.target.style.background = COLORS.teal; e.target.style.color = COLORS.bg; }}
+              onMouseLeave={(e) => { e.target.style.background = "transparent"; e.target.style.color = COLORS.teal; }}>
               Email me
             </a>
-            <a href="https://linkedin.com/in/trishakuek" style={{
-              background: "transparent", border: "1px solid rgba(240,237,232,0.2)", color: "rgba(240,237,232,0.6)",
+            <a href="https://linkedin.com/in/trishakuek" target="_blank" rel="noopener noreferrer" style={{
+              background: "transparent", border: `1px solid rgba(240,237,232,0.2)`, color: "rgba(240,237,232,0.6)",
               fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase",
-              padding: "14px 28px", textDecoration: "none", fontFamily: "'DM Mono', monospace",
+              padding: "14px 28px", textDecoration: "none", fontFamily: FONTS.mono,
               transition: "all 0.2s ease", display: "inline-block", whiteSpace: "nowrap",
             }}
-              onMouseEnter={(e) => { e.target.style.borderColor = "rgba(240,237,232,0.5)"; e.target.style.color = "#F0EDE8"; }}
+              onMouseEnter={(e) => { e.target.style.borderColor = "rgba(240,237,232,0.5)"; e.target.style.color = COLORS.text; }}
               onMouseLeave={(e) => { e.target.style.borderColor = "rgba(240,237,232,0.2)"; e.target.style.color = "rgba(240,237,232,0.6)"; }}>
               LinkedIn
             </a>
@@ -251,19 +253,19 @@ export default function TKAbout() {
       </main>
 
       <footer style={{
-        padding: "32px 48px", borderTop: "0.5px solid rgba(240,237,232,0.08)",
+        padding: "32px 48px", borderTop: `0.5px solid ${COLORS.border}`,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         position: "relative", zIndex: 1,
       }}>
-        <span style={{ fontSize: "11px", color: "rgba(240,237,232,0.2)", fontFamily: "'DM Mono', monospace", letterSpacing: "0.1em" }}>Trisha Kuek · {new Date().getFullYear()}</span>
+        <span style={{ fontSize: "11px", color: "rgba(240,237,232,0.2)", fontFamily: FONTS.mono, letterSpacing: "0.1em" }}>Trisha Kuek · {new Date().getFullYear()}</span>
         <div style={{ display: "flex", gap: "32px" }}>
           {[["Email", "mailto:trishakuek@gmail.com"], ["LinkedIn", "https://linkedin.com/in/trishakuek"]].map(([label, href]) => (
             <a key={label} href={href} {...(label === "LinkedIn" ? { target: "_blank", rel: "noopener noreferrer" } : {})} style={{
               fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase",
               color: "rgba(240,237,232,0.25)", textDecoration: "none",
-              fontFamily: "'DM Mono', monospace", transition: "color 0.2s",
+              fontFamily: FONTS.mono, transition: "color 0.2s",
             }}
-              onMouseEnter={(e) => e.target.style.color = "#00C4B4"}
+              onMouseEnter={(e) => e.target.style.color = COLORS.teal}
               onMouseLeave={(e) => e.target.style.color = "rgba(240,237,232,0.25)"}>
               {label}
             </a>
@@ -272,7 +274,7 @@ export default function TKAbout() {
       </footer>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+        ${FONT_IMPORT}
         * { box-sizing: border-box; margin: 0; padding: 0; }
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #0D0D0D; }
@@ -287,12 +289,12 @@ function NumberCard({ item }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
-      background: hovered ? "#1A1A1A" : "#0D0D0D", padding: "36px 40px",
+      background: hovered ? COLORS.surface : COLORS.bg, padding: "36px 40px",
       transition: "background 0.25s ease", position: "relative", overflow: "hidden",
     }}>
-      <div style={{ position: "absolute", top: 0, left: 0, width: hovered ? "100%" : "0%", height: "1px", background: "linear-gradient(to right, #00C4B4, transparent)", transition: "width 0.4s ease" }} />
-      <p style={{ fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: "500", letterSpacing: "-0.03em", color: hovered ? "#00C4B4" : "#F0EDE8", fontFamily: "'DM Mono', monospace", margin: "0 0 10px", transition: "color 0.25s" }}>{item.stat}</p>
-      <p style={{ fontSize: "11px", color: "rgba(240,237,232,0.35)", fontFamily: "'DM Mono', monospace", lineHeight: 1.6, letterSpacing: "0.02em" }}>{item.label}</p>
+      <div style={{ position: "absolute", top: 0, left: 0, width: hovered ? "100%" : "0%", height: "1px", background: `linear-gradient(to right, ${COLORS.teal}, transparent)`, transition: "width 0.4s ease" }} />
+      <p style={{ fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 500, letterSpacing: "-0.03em", color: hovered ? COLORS.teal : COLORS.text, fontFamily: FONTS.display, margin: "0 0 12px", transition: "color 0.25s" }}>{item.stat}</p>
+      <p style={{ fontSize: "12px", color: "rgba(240,237,232,0.45)", fontFamily: FONTS.mono, lineHeight: 1.6, letterSpacing: "0.04em" }}>{item.label}</p>
     </div>
   );
 }
@@ -301,13 +303,13 @@ function PillarCard({ pillar }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
-      background: hovered ? "#1A1A1A" : "#0D0D0D", padding: "48px 40px",
+      background: hovered ? COLORS.surface : COLORS.bg, padding: "48px 40px",
       transition: "background 0.25s ease", position: "relative", overflow: "hidden",
     }}>
       <div style={{ position: "absolute", top: 0, left: 0, width: hovered ? "100%" : "0%", height: "1px", background: `linear-gradient(to right, ${pillar.accent}, transparent)`, transition: "width 0.4s ease" }} />
-      <span style={{ fontSize: "9px", letterSpacing: "0.2em", color: "rgba(240,237,232,0.2)", fontFamily: "'DM Mono', monospace", display: "block", marginBottom: "28px" }}>{pillar.index}</span>
-      <h3 style={{ fontSize: "13px", fontWeight: "500", letterSpacing: "0.04em", lineHeight: 1.3, color: hovered ? pillar.accent : "#F0EDE8", fontFamily: "'DM Mono', monospace", marginBottom: "20px", transition: "color 0.25s" }}>{pillar.label}</h3>
-      <p style={{ fontSize: "13px", color: "rgba(240,237,232,0.45)", lineHeight: 1.8, fontFamily: "'DM Mono', monospace" }}>{pillar.body}</p>
+      <span style={{ fontSize: "9px", letterSpacing: "0.22em", color: "rgba(240,237,232,0.25)", fontFamily: FONTS.mono, display: "block", marginBottom: "28px" }}>{pillar.index}</span>
+      <h3 style={{ fontSize: "22px", fontWeight: 500, letterSpacing: "-0.015em", lineHeight: 1.2, color: hovered ? pillar.accent : COLORS.text, fontFamily: FONTS.display, marginBottom: "20px", transition: "color 0.25s" }}>{pillar.label}</h3>
+      <p style={{ fontSize: "14px", color: "rgba(240,237,232,0.6)", lineHeight: 1.7, fontFamily: FONTS.body, fontWeight: 300 }}>{pillar.body}</p>
     </div>
   );
 }
@@ -315,24 +317,24 @@ function PillarCard({ pillar }) {
 function RoleRow({ role, expanded, onToggle, isLast }) {
   const [hovered, setHovered] = useState(false);
   return (
-    <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{ borderTop: "0.5px solid rgba(240,237,232,0.08)", borderBottom: isLast ? "0.5px solid rgba(240,237,232,0.08)" : "none" }}>
+    <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{ borderTop: `0.5px solid ${COLORS.border}`, borderBottom: isLast ? `0.5px solid ${COLORS.border}` : "none" }}>
       <div onClick={onToggle} style={{ display: "grid", gridTemplateColumns: "1fr auto auto", gap: "32px", alignItems: "center", padding: "32px 0", cursor: "pointer" }}>
         <div>
-          <p style={{ fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", color: hovered ? "#00C4B4" : "rgba(240,237,232,0.3)", fontFamily: "'DM Mono', monospace", marginBottom: "8px", transition: "color 0.2s" }}>{role.company}</p>
-          <p style={{ fontSize: "clamp(14px, 1.8vw, 19px)", fontWeight: "400", letterSpacing: "-0.01em", color: "#F0EDE8", fontFamily: "'DM Mono', monospace" }}>{role.role}</p>
+          <p style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: hovered ? COLORS.teal : "rgba(240,237,232,0.4)", fontFamily: FONTS.mono, marginBottom: "10px", transition: "color 0.2s" }}>{role.company}</p>
+          <p style={{ fontSize: "clamp(18px, 2vw, 24px)", fontWeight: 500, letterSpacing: "-0.015em", color: COLORS.text, fontFamily: FONTS.display }}>{role.role}</p>
         </div>
         <div style={{ textAlign: "right" }}>
-          <p style={{ fontSize: "11px", color: "rgba(240,237,232,0.3)", fontFamily: "'DM Mono', monospace", letterSpacing: "0.1em", marginBottom: "4px" }}>{role.period}</p>
-          <p style={{ fontSize: "10px", color: "rgba(240,237,232,0.2)", fontFamily: "'DM Mono', monospace", letterSpacing: "0.08em" }}>{role.location}</p>
+          <p style={{ fontSize: "11px", color: "rgba(240,237,232,0.4)", fontFamily: FONTS.mono, letterSpacing: "0.1em", marginBottom: "4px" }}>{role.period}</p>
+          <p style={{ fontSize: "10px", color: "rgba(240,237,232,0.3)", fontFamily: FONTS.mono, letterSpacing: "0.08em" }}>{role.location}</p>
         </div>
-        <div style={{ fontSize: "18px", color: expanded ? "#FF5C1A" : "rgba(240,237,232,0.25)", transition: "color 0.2s, transform 0.3s", transform: expanded ? "rotate(45deg)" : "rotate(0deg)", width: "24px", textAlign: "center", userSelect: "none" }}>+</div>
+        <div style={{ fontSize: "18px", color: expanded ? COLORS.orange : "rgba(240,237,232,0.3)", transition: "color 0.2s, transform 0.3s", transform: expanded ? "rotate(45deg)" : "rotate(0deg)", width: "24px", textAlign: "center", userSelect: "none" }}>+</div>
       </div>
-      <div style={{ overflow: "hidden", maxHeight: expanded ? "400px" : "0px", transition: "max-height 0.4s ease" }}>
+      <div style={{ overflow: "hidden", maxHeight: expanded ? "500px" : "0px", transition: "max-height 0.4s ease" }}>
         <div style={{ paddingBottom: "36px", paddingRight: "80px" }}>
-          <p style={{ fontSize: "13px", color: "rgba(240,237,232,0.5)", lineHeight: 1.85, fontFamily: "'DM Mono', monospace", marginBottom: "20px" }}>{role.detail}</p>
+          <p style={{ fontSize: "15px", color: "rgba(240,237,232,0.65)", lineHeight: 1.75, fontFamily: FONTS.body, fontWeight: 300, marginBottom: "20px" }}>{role.detail}</p>
           <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
             {role.tags.map((tag) => (
-              <span key={tag} style={{ fontSize: "9px", letterSpacing: "0.15em", textTransform: "uppercase", border: "0.5px solid rgba(240,237,232,0.15)", color: "rgba(240,237,232,0.35)", padding: "4px 10px", fontFamily: "'DM Mono', monospace" }}>{tag}</span>
+              <span key={tag} style={{ fontSize: "9px", letterSpacing: "0.15em", textTransform: "uppercase", border: `0.5px solid rgba(240,237,232,0.18)`, color: "rgba(240,237,232,0.45)", padding: "4px 10px", fontFamily: FONTS.mono }}>{tag}</span>
             ))}
           </div>
         </div>

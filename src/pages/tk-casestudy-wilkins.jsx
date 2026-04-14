@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from 'react-router-dom';
+import { FONTS, COLORS, FONT_IMPORT } from '../theme.js';
 
 const RESULTS = [
   { stat: "#1", label: "Water brand in the Philippines", highlight: true },
@@ -41,7 +42,7 @@ export default function CaseStudyWilkins() {
         <BackButton loaded={loaded} />
       </main>
       <Footer />
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap'); * { box-sizing: border-box; margin: 0; padding: 0; } ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: #0D0D0D; } ::-webkit-scrollbar-thumb { background: rgba(240,237,232,0.15); }
+      <style>{`${FONT_IMPORT} * { box-sizing: border-box; margin: 0; padding: 0; } ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: #0D0D0D; } ::-webkit-scrollbar-thumb { background: rgba(240,237,232,0.15); }
         :focus-visible { outline: 2px solid #00C4B4; outline-offset: 2px; }`}</style>
     </div>
   );
@@ -81,8 +82,8 @@ function Hero({ loaded, accentColor, title, summary }) {
     <div style={{ padding: "0 48px", marginBottom: "100px", opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s" }}>
       <div style={{ maxWidth: "900px" }}>
         <div style={{ width: loaded ? "60px" : "0px", height: "2px", background: accentColor, marginBottom: "40px", transition: "width 0.8s ease 0.5s" }} />
-        <h1 style={{ fontSize: "clamp(28px, 5.5vw, 76px)", fontWeight: "400", lineHeight: 1.05, letterSpacing: "-0.03em", fontFamily: "'DM Mono', monospace", margin: "0 0 32px", color: "#F0EDE8" }}>{title}</h1>
-        <p style={{ fontSize: "clamp(15px, 1.6vw, 20px)", color: "rgba(240,237,232,0.5)", lineHeight: 1.7, maxWidth: "600px", fontFamily: "'DM Mono', monospace" }}>{summary}</p>
+        <h1 style={{ fontSize: "clamp(28px, 5.5vw, 76px)", fontWeight: "400", lineHeight: 1.05, letterSpacing: "-0.03em", fontFamily: FONTS.display, margin: "0 0 32px", color: "#F0EDE8" }}>{title}</h1>
+        <p style={{ fontSize: "clamp(15px, 1.6vw, 20px)", color: "rgba(240,237,232,0.5)", lineHeight: 1.7, maxWidth: "600px", fontFamily: FONTS.body }}>{summary}</p>
       </div>
     </div>
   );
@@ -116,7 +117,7 @@ function Narrative({ loaded, labels, blocks }) {
           {blocks.map((block, i) => (
             <div key={i} style={{ position: "relative", paddingLeft: block.accent ? "24px" : "0" }}>
               {block.accent && <div style={{ position: "absolute", left: 0, top: "4px", width: "2px", height: "calc(100% - 4px)", background: block.accent }} />}
-              <p style={{ fontSize: "clamp(15px, 1.5vw, 18px)", color: block.accent ? "rgba(240,237,232,0.75)" : "rgba(240,237,232,0.45)", lineHeight: 1.85, fontFamily: "'DM Mono', monospace" }}>{block.text}</p>
+              <p style={{ fontSize: "clamp(15px, 1.5vw, 18px)", color: block.accent ? "rgba(240,237,232,0.75)" : "rgba(240,237,232,0.45)", lineHeight: 1.85, fontFamily: FONTS.body }}>{block.text}</p>
             </div>
           ))}
         </div>
@@ -165,7 +166,7 @@ function ResultsGrid({ loaded, results, accentColor }) {
             return (
               <div key={i} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{ background: hovered ? "#1A1A1A" : "#0D0D0D", padding: "36px 32px", transition: "background 0.25s ease", position: "relative", overflow: "hidden" }}>
                 <div style={{ position: "absolute", top: 0, left: 0, width: hovered ? "100%" : "0%", height: "1px", background: `linear-gradient(to right, ${color}, transparent)`, transition: "width 0.4s ease" }} />
-                <p style={{ fontSize: "clamp(22px, 3vw, 38px)", fontWeight: "500", letterSpacing: "-0.03em", color: hovered ? color : "#F0EDE8", fontFamily: "'DM Mono', monospace", margin: "0 0 10px", transition: "color 0.25s" }}>{r.stat}</p>
+                <p style={{ fontSize: "clamp(22px, 3vw, 38px)", fontWeight: "500", letterSpacing: "-0.03em", color: hovered ? color : "#F0EDE8", fontFamily: FONTS.display, margin: "0 0 10px", transition: "color 0.25s" }}>{r.stat}</p>
                 <p style={{ fontSize: "11px", color: "rgba(240,237,232,0.35)", fontFamily: "'DM Mono', monospace", lineHeight: 1.6, letterSpacing: "0.02em" }}>{r.label}</p>
               </div>
             );
@@ -195,7 +196,7 @@ function BackButton({ loaded }) {
     <div style={{ padding: "0 48px", opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 0.85s" }}>
       <div style={{ maxWidth: "980px", borderTop: "0.5px solid rgba(240,237,232,0.08)", paddingTop: "48px" }}>
         <button onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}>
-          <span style={{ fontSize: "clamp(18px, 2.5vw, 28px)", fontWeight: "400", letterSpacing: "-0.02em", color: hovered ? "#00C4B4" : "rgba(240,237,232,0.5)", fontFamily: "'DM Mono', monospace", transition: "color 0.25s" }}>← Back to all work</span>
+          <span style={{ fontSize: "clamp(18px, 2.5vw, 28px)", fontWeight: "400", letterSpacing: "-0.02em", color: hovered ? "#00C4B4" : "rgba(240,237,232,0.5)", fontFamily: FONTS.display, transition: "color 0.25s" }}>← Back to all work</span>
         </button>
       </div>
     </div>

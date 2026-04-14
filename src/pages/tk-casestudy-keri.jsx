@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from 'react-router-dom';
+import { FONTS, COLORS, FONT_IMPORT } from '../theme.js';
 
 const RESULTS = [
   { stat: "+32%", label: "Keri value growth" },
@@ -21,7 +22,7 @@ export default function CaseStudyKeri() {
   }, []);
 
   return (
-    <div style={{ background: "#0D0D0D", minHeight: "100vh", fontFamily: "'DM Mono', 'Courier New', monospace", color: "#F0EDE8", overflowX: "hidden", position: "relative" }}>
+    <div style={{ background: "#0D0D0D", minHeight: "100vh", fontFamily: FONTS.body, color: "#F0EDE8", overflowX: "hidden", position: "relative" }}>
 
       <div style={{ position: "fixed", inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`, pointerEvents: "none", zIndex: 0, opacity: 0.6 }} />
       <div style={{ position: "fixed", bottom: 0, left: 0, width: "50vw", height: "50vw", background: "radial-gradient(ellipse at bottom left, rgba(255,92,26,0.05) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
@@ -54,10 +55,10 @@ export default function CaseStudyKeri() {
         <div style={{ padding: "0 48px", marginBottom: "80px", opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s" }}>
           <div style={{ maxWidth: "900px" }}>
             <div style={{ width: loaded ? "60px" : "0px", height: "2px", background: "#FF5C1A", marginBottom: "40px", transition: "width 0.8s ease 0.5s" }} />
-            <h1 style={{ fontSize: "clamp(28px, 5.5vw, 76px)", fontWeight: "400", lineHeight: 1.05, letterSpacing: "-0.03em", fontFamily: "'DM Mono', monospace", margin: "0 0 32px", color: "#F0EDE8" }}>
+            <h1 style={{ fontSize: "clamp(28px, 5.5vw, 76px)", fontWeight: "400", lineHeight: 1.05, letterSpacing: "-0.03em", fontFamily: FONTS.display, margin: "0 0 32px", color: "#F0EDE8" }}>
               Keri<br /><span style={{ color: "#FF5C1A" }}>Pulp Friction</span>.
             </h1>
-            <p style={{ fontSize: "clamp(15px, 1.6vw, 20px)", color: "rgba(240,237,232,0.5)", lineHeight: 1.7, maxWidth: "600px", fontFamily: "'DM Mono', monospace" }}>
+            <p style={{ fontSize: "clamp(15px, 1.6vw, 20px)", color: "rgba(240,237,232,0.5)", lineHeight: 1.7, maxWidth: "600px", fontFamily: FONTS.body }}>
               How a tribal argument about pulp turned Keri into New Zealand's #1 juice brand — for the first time in the brand's history.
             </p>
           </div>
@@ -135,7 +136,7 @@ export default function CaseStudyKeri() {
             <div style={{ borderTop: "0.5px solid rgba(240,237,232,0.1)", paddingTop: "32px", marginBottom: "40px" }}>
               <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(240,237,232,0.3)", fontFamily: "'DM Mono', monospace" }}>On reflection</span>
             </div>
-            <blockquote style={{ fontSize: "clamp(16px, 2vw, 24px)", fontWeight: "400", lineHeight: 1.55, letterSpacing: "-0.015em", color: "rgba(240,237,232,0.6)", fontFamily: "'DM Mono', monospace", margin: 0, maxWidth: "720px", borderLeft: "2px solid #FF5C1A", paddingLeft: "32px" }}>
+            <blockquote style={{ fontSize: "clamp(16px, 2vw, 24px)", fontWeight: "400", lineHeight: 1.55, letterSpacing: "-0.015em", color: "rgba(240,237,232,0.6)", fontFamily: FONTS.body, margin: 0, maxWidth: "720px", borderLeft: "2px solid #FF5C1A", paddingLeft: "32px" }}>
               The work that lands hardest is almost never about the product. It's about the thing people already believe — and the courage to build a platform around a tension rather than resolve it.
             </blockquote>
           </div>
@@ -160,7 +161,7 @@ export default function CaseStudyKeri() {
       </footer>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+        ${FONT_IMPORT}
         * { box-sizing: border-box; margin: 0; padding: 0; }
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #0D0D0D; }
@@ -175,7 +176,7 @@ function NarrativeBlock({ children, accent }) {
   return (
     <div style={{ position: "relative", paddingLeft: accent ? "24px" : "0" }}>
       {accent && <div style={{ position: "absolute", left: 0, top: "4px", width: "2px", height: "calc(100% - 4px)", background: accent }} />}
-      <p style={{ fontSize: "clamp(15px, 1.5vw, 18px)", color: accent ? "rgba(240,237,232,0.75)" : "rgba(240,237,232,0.45)", lineHeight: 1.85, fontFamily: "'DM Mono', monospace" }}>{children}</p>
+      <p style={{ fontSize: "clamp(15px, 1.5vw, 18px)", color: accent ? "rgba(240,237,232,0.75)" : "rgba(240,237,232,0.45)", lineHeight: 1.85, fontFamily: FONTS.body }}>{children}</p>
     </div>
   );
 }
@@ -196,7 +197,7 @@ function ResultCard({ result, highlight }) {
   return (
     <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{ background: hovered ? "#1A1A1A" : "#0D0D0D", padding: "36px 32px", transition: "background 0.25s ease", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", top: 0, left: 0, width: hovered ? "100%" : "0%", height: "1px", background: `linear-gradient(to right, ${highlight ? "#FF5C1A" : "#00C4B4"}, transparent)`, transition: "width 0.4s ease" }} />
-      <p style={{ fontSize: "clamp(24px, 3vw, 40px)", fontWeight: "500", letterSpacing: "-0.03em", color: hovered ? (highlight ? "#FF5C1A" : "#00C4B4") : "#F0EDE8", fontFamily: "'DM Mono', monospace", margin: "0 0 10px", transition: "color 0.25s" }}>{result.stat}</p>
+      <p style={{ fontSize: "clamp(24px, 3vw, 40px)", fontWeight: "500", letterSpacing: "-0.03em", color: hovered ? (highlight ? "#FF5C1A" : "#00C4B4") : "#F0EDE8", fontFamily: FONTS.display, margin: "0 0 10px", transition: "color 0.25s" }}>{result.stat}</p>
       <p style={{ fontSize: "11px", color: "rgba(240,237,232,0.35)", fontFamily: "'DM Mono', monospace", lineHeight: 1.6, letterSpacing: "0.02em" }}>{result.label}</p>
     </div>
   );
@@ -206,7 +207,7 @@ function BackToWork() {
   const [hovered, setHovered] = useState(false);
   return (
     <button onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}>
-      <span style={{ fontSize: "clamp(18px, 2.5vw, 28px)", fontWeight: "400", letterSpacing: "-0.02em", color: hovered ? "#00C4B4" : "rgba(240,237,232,0.5)", fontFamily: "'DM Mono', monospace", transition: "color 0.25s" }}>← Back to all work</span>
+      <span style={{ fontSize: "clamp(18px, 2.5vw, 28px)", fontWeight: "400", letterSpacing: "-0.02em", color: hovered ? "#00C4B4" : "rgba(240,237,232,0.5)", fontFamily: FONTS.display, transition: "color 0.25s" }}>← Back to all work</span>
     </button>
   );
 }

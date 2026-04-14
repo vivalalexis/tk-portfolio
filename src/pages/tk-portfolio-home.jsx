@@ -1,61 +1,66 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from 'react-router-dom';
+import { FONTS, COLORS, FONT_IMPORT, THUMBS } from '../theme.js';
 
 const CASE_STUDIES = [
   {
     id: 1,
     title: "Animal Crossing x Deliveroo",
     category: "Brand Activation",
-    tags: ["Social", "Gaming", "Zero Budget"],
-    result: "$1.2M earned media · 700K engagements · 13M impressions · $0 spend",
+    heroStat: "$1.2M earned media",
+    heroStatSub: "$0 spend · 13M impressions",
     year: "2021",
     award: "Spikes Asia Bronze",
-    description: "A cultural moment built on a video game trend, executed with zero paid media. Pure creative instinct meeting platform behaviour.",
+    description: "A cultural moment built on a video game trend, executed with zero paid media.",
+    slug: "animal-crossing",
   },
   {
     id: 2,
     title: "Keri Pulp Friction",
     category: "Brand Strategy",
-    tags: ["Cultural Insight", "FMCG", "New Zealand"],
-    result: "+32% value · +5.5pp share · #1 juice brand NZ · 2 GNMA nominations",
+    heroStat: "#1 juice brand in NZ",
+    heroStatSub: "+32% value · +5.5pp share",
     year: "2024",
-    award: null,
-    description: "Identified that Kiwis treat pulp preference as tribal identity, not rational product choice. Built a campaign platform around that tension and delivered category-outperforming growth.",
+    award: "2× GNMA Nominated",
+    description: "Reframed pulp preference as tribal identity, not rational product choice.",
+    slug: "keri-pulp-friction",
   },
   {
     id: 3,
     title: "Wilkins #1 Philippines",
     category: "Growth Marketing",
-    tags: ["Market Leadership", "Philippines", "FMCG"],
-    result: "#1 water brand in the Philippines · 23.1% vol share · +7pts vs PY",
+    heroStat: "#1 water brand PH",
+    heroStatSub: "23.1% vol share · +7pts vs PY",
     year: "2025",
     award: null,
-    description: "Owning a market in one of APAC's most competitive hydration categories. Regional IMC strategy translated into sustained market leadership.",
+    description: "Regional IMC strategy translated into sustained market leadership in APAC's most competitive hydration category.",
+    slug: "wilkins",
   },
   {
     id: 4,
     title: "CRM Architecture — Braze",
     category: "CRM & Lifecycle",
-    tags: ["Braze", "CRM", "Lifecycle Design"],
-    result: "+17% open rates · 3x output · loyalty mechanic shipped before product roadmap",
+    heroStat: "Built Deliveroo CRM from zero",
+    heroStatSub: "+17% open rates · 3× output",
     year: "2020",
     award: null,
-    description: "Built Deliveroo's CRM architecture from zero — consumer lifecycle mapping, segmented journeys, A/B testing embedded from day one. Then shipped a loyalty mechanic entirely within the platform.",
+    description: "Consumer lifecycle mapping, segmented journeys, A/B testing embedded from day one.",
+    slug: "crm-braze",
   },
   {
     id: 5,
     title: "Coke Music Promo — 3 Cycles",
     category: "Integrated Marketing",
-    tags: ["Regional IMC", "First-Party Data", "ASEAN"],
-    result: "4M+ first-party data · 2x unique users · 20% agency savings in Year 3",
+    heroStat: "4M+ first-party data records",
+    heroStatSub: "2× unique users · 20% agency savings Y3",
     year: "2024",
     award: null,
-    description: "Built and iterated a regional IMC toolkit across three cycles that enabled markets to localise efficiently without restarting from scratch. Each cycle compounded on the last.",
+    description: "Regional IMC toolkit iterated across three cycles — each compounding on the last.",
+    slug: "coke-music-promo",
   },
 ];
 
 const NAV_ITEMS = ["Work", "About", "Contact"];
-
 const NAV_PATH = { Work: "/work", About: "/about", Contact: "/contact" };
 
 export default function TKPortfolio() {
@@ -71,9 +76,9 @@ export default function TKPortfolio() {
 
   return (
     <div style={{
-      background: "#0D0D0D", minHeight: "100vh",
-      fontFamily: "'DM Mono', 'Courier New', monospace",
-      color: "#F0EDE8", overflowX: "hidden", position: "relative",
+      background: COLORS.bg, minHeight: "100vh",
+      fontFamily: FONTS.body,
+      color: COLORS.text, overflowX: "hidden", position: "relative",
     }}>
       <div style={{
         position: "fixed", inset: 0,
@@ -89,32 +94,32 @@ export default function TKPortfolio() {
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
         padding: "24px 48px", display: "flex", alignItems: "center", justifyContent: "space-between",
-        borderBottom: "0.5px solid rgba(240,237,232,0.08)",
+        borderBottom: `0.5px solid ${COLORS.border}`,
         backdropFilter: "blur(12px)", background: "rgba(13,13,13,0.85)",
         opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(-8px)",
         transition: "opacity 0.6s ease, transform 0.6s ease",
       }}>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <div style={{ fontSize: "22px", fontWeight: "700", letterSpacing: "0.12em", color: "#F0EDE8", fontFamily: "'DM Mono', monospace", cursor: "pointer" }}>
-            TK<span style={{ color: "#00C4B4", marginLeft: "2px" }}>.</span>
+          <div style={{ fontSize: "22px", fontWeight: "700", letterSpacing: "0.12em", color: COLORS.text, fontFamily: FONTS.mono, cursor: "pointer" }}>
+            TK<span style={{ color: COLORS.teal, marginLeft: "2px" }}>.</span>
           </div>
         </Link>
         <div style={{ display: "flex", gap: "40px", alignItems: "center" }}>
           {NAV_ITEMS.map((item) => (
             <NavLink key={item} to={NAV_PATH[item]} style={({ isActive }) => ({
-              color: isActive ? "#F0EDE8" : activeNav === item ? "#00C4B4" : "rgba(240,237,232,0.5)",
+              color: isActive ? COLORS.text : activeNav === item ? COLORS.teal : "rgba(240,237,232,0.5)",
               fontSize: "12px", letterSpacing: "0.18em", textTransform: "uppercase",
               cursor: "pointer", transition: "color 0.2s ease", padding: "4px 0",
-              fontFamily: "'DM Mono', monospace", textDecoration: "none", display: "inline-block",
+              fontFamily: FONTS.mono, textDecoration: "none", display: "inline-block",
             })} onMouseEnter={() => setActiveNav(item)} onMouseLeave={() => setActiveNav(null)}>{item}</NavLink>
           ))}
           <a href="mailto:trishakuek@gmail.com" style={{
-            background: "#00C4B4", color: "#0D0D0D", fontSize: "11px", letterSpacing: "0.18em",
+            background: COLORS.teal, color: COLORS.bg, fontSize: "11px", letterSpacing: "0.18em",
             textTransform: "uppercase", padding: "10px 20px", textDecoration: "none",
-            fontWeight: "700", fontFamily: "'DM Mono', monospace", transition: "background 0.2s ease",
+            fontWeight: "700", fontFamily: FONTS.mono, transition: "background 0.2s ease",
           }}
-            onMouseEnter={(e) => e.target.style.background = "#FF5C1A"}
-            onMouseLeave={(e) => e.target.style.background = "#00C4B4"}>
+            onMouseEnter={(e) => e.target.style.background = COLORS.orange}
+            onMouseLeave={(e) => e.target.style.background = COLORS.teal}>
             Get in touch
           </a>
         </div>
@@ -132,78 +137,85 @@ export default function TKPortfolio() {
           fontSize: "clamp(120px, 22vw, 320px)", fontWeight: "900",
           letterSpacing: "-0.05em", color: "rgba(240,237,232,0.03)",
           lineHeight: 1, userSelect: "none", pointerEvents: "none",
-          fontFamily: "'DM Mono', monospace",
+          fontFamily: FONTS.display, fontStyle: "italic",
         }}>TK</div>
 
-        <div style={{ width: loaded ? "80px" : "0px", height: "2px", background: "#00C4B4", marginBottom: "32px", transition: "width 0.8s ease 0.3s" }} />
+        <div style={{ width: loaded ? "80px" : "0px", height: "2px", background: COLORS.teal, marginBottom: "32px", transition: "width 0.8s ease 0.3s" }} />
+
+        <span style={{
+          fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase",
+          color: COLORS.teal, fontFamily: FONTS.mono, display: "block", marginBottom: "20px",
+          opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease 0.35s",
+        }}>
+          Trisha Kuek — Senior Marketing Leader
+        </span>
 
         <h1 style={{
-          fontSize: "clamp(28px, 4.5vw, 64px)", fontWeight: "400", lineHeight: 1.15,
-          margin: "0 0 24px", maxWidth: "820px", letterSpacing: "-0.02em",
-          fontFamily: "'DM Mono', monospace",
+          fontSize: "clamp(36px, 6vw, 84px)", fontWeight: "400", lineHeight: 1.05,
+          margin: "0 0 32px", maxWidth: "960px", letterSpacing: "-0.025em",
+          fontFamily: FONTS.display,
           opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)",
           transition: "opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s",
         }}>
-          Strategic enough to{" "}
-          <span style={{ color: "#00C4B4" }}>shape the brief</span>
-          {", "}creative enough to{" "}
-          <span style={{ color: "#FF5C1A" }}>make it land</span>.
+          Strategic enough to shape the brief. Creative enough to{" "}
+          <em style={{ color: COLORS.orange, fontStyle: "italic", fontWeight: 400 }}>make it land</em>.
         </h1>
 
         <p style={{
-          fontSize: "clamp(13px, 1.4vw, 17px)", color: "rgba(240,237,232,0.5)",
-          maxWidth: "560px", lineHeight: 1.7, margin: "0 0 12px", letterSpacing: "0.01em",
-          fontFamily: "'DM Mono', monospace",
+          fontSize: "clamp(15px, 1.4vw, 19px)", color: "rgba(240,237,232,0.65)",
+          maxWidth: "620px", lineHeight: 1.6, margin: "0 0 48px", letterSpacing: "0.005em",
+          fontFamily: FONTS.body, fontWeight: 300,
           opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(16px)",
           transition: "opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s",
         }}>
-          Trisha Kuek. Senior marketing leader across FMCG, hypergrowth tech, and agencies.
-        </p>
-
-        <p style={{
-          fontSize: "clamp(13px, 1.4vw, 17px)", color: "rgba(240,237,232,0.4)",
-          maxWidth: "560px", lineHeight: 1.7, margin: "0 0 48px", letterSpacing: "0.01em",
-          fontFamily: "'DM Mono', monospace",
-          opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(16px)",
-          transition: "opacity 0.8s ease 0.65s, transform 0.8s ease 0.65s",
-        }}>
-          I close the gap between strategy and execution — at speed, across markets, without losing the creative.
+          Twelve years across FMCG, hypergrowth tech, and agencies — closing the gap between strategy and execution, at speed, across markets, without losing the creative.
         </p>
 
         <div style={{
-          display: "flex", gap: "16px", alignItems: "center",
+          display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap",
           opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(12px)",
           transition: "opacity 0.8s ease 0.8s, transform 0.8s ease 0.8s",
         }}>
+          <Link to="/work" style={{
+            background: COLORS.teal, color: COLORS.bg,
+            fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase",
+            padding: "14px 28px", textDecoration: "none", fontFamily: FONTS.mono,
+            fontWeight: 700, transition: "background 0.2s ease", display: "inline-block",
+          }}
+            onMouseEnter={(e) => e.target.style.background = COLORS.orange}
+            onMouseLeave={(e) => e.target.style.background = COLORS.teal}>
+            See the work →
+          </Link>
           <a href="mailto:trishakuek@gmail.com" style={{
-            background: "transparent", border: "1px solid #00C4B4", color: "#00C4B4",
+            background: "transparent", border: `1px solid rgba(240,237,232,0.2)`, color: "rgba(240,237,232,0.6)",
             fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase",
-            padding: "14px 28px", textDecoration: "none", fontFamily: "'DM Mono', monospace",
+            padding: "14px 28px", textDecoration: "none", fontFamily: FONTS.mono,
             transition: "all 0.2s ease", display: "inline-block",
           }}
-            onMouseEnter={(e) => { e.target.style.background = "#00C4B4"; e.target.style.color = "#0D0D0D"; }}
-            onMouseLeave={(e) => { e.target.style.background = "transparent"; e.target.style.color = "#00C4B4"; }}>
-            Email me
-          </a>
-          <a href="https://linkedin.com/in/trishakuek" target="_blank" rel="noopener noreferrer" style={{
-            background: "transparent", border: "1px solid rgba(240,237,232,0.2)", color: "rgba(240,237,232,0.6)",
-            fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase",
-            padding: "14px 28px", textDecoration: "none", fontFamily: "'DM Mono', monospace",
-            transition: "all 0.2s ease", display: "inline-block",
-          }}
-            onMouseEnter={(e) => { e.target.style.borderColor = "rgba(240,237,232,0.5)"; e.target.style.color = "#F0EDE8"; }}
+            onMouseEnter={(e) => { e.target.style.borderColor = "rgba(240,237,232,0.5)"; e.target.style.color = COLORS.text; }}
             onMouseLeave={(e) => { e.target.style.borderColor = "rgba(240,237,232,0.2)"; e.target.style.color = "rgba(240,237,232,0.6)"; }}>
-            LinkedIn
+            Email
           </a>
         </div>
 
+        {/* Brand logo strip — proof above the fold */}
         <div style={{
-          position: "absolute", bottom: "40px", right: "48px",
-          display: "flex", flexDirection: "column", alignItems: "center", gap: "8px",
-          opacity: loaded ? 0.3 : 0, transition: "opacity 1s ease 1.2s",
+          marginTop: "80px", paddingTop: "32px",
+          borderTop: `0.5px solid ${COLORS.border}`,
+          display: "flex", alignItems: "center", gap: "32px", flexWrap: "wrap",
+          opacity: loaded ? 0.8 : 0, transition: "opacity 1s ease 1s",
         }}>
-          <div style={{ width: "1px", height: "60px", background: "linear-gradient(to bottom, transparent, #F0EDE8)", animation: "pulse 2s ease-in-out infinite" }} />
-          <span style={{ fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase", writingMode: "vertical-rl" }}>Scroll</span>
+          <span style={{ fontSize: "9px", letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(240,237,232,0.35)", fontFamily: FONTS.mono }}>
+            Work shipped with
+          </span>
+          <div style={{ display: "flex", gap: "40px", flexWrap: "wrap", alignItems: "center" }}>
+            {["Coca-Cola", "Deliveroo", "Keri", "Wilkins", "Braze"].map((brand) => (
+              <span key={brand} style={{
+                fontSize: "14px", fontFamily: FONTS.display, fontWeight: 500,
+                color: "rgba(240,237,232,0.55)", letterSpacing: "0.01em",
+              }}>{brand}</span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -211,55 +223,56 @@ export default function TKPortfolio() {
       <section style={{ padding: "120px 48px", position: "relative", zIndex: 1 }}>
         <div style={{
           display: "flex", alignItems: "baseline", justifyContent: "space-between",
-          marginBottom: "64px", borderTop: "0.5px solid rgba(240,237,232,0.1)", paddingTop: "32px",
+          marginBottom: "48px", borderTop: `0.5px solid rgba(240,237,232,0.1)`, paddingTop: "32px",
         }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: "24px" }}>
-            <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#00C4B4", fontFamily: "'DM Mono', monospace" }}>Selected work</span>
-            <span style={{ fontSize: "10px", letterSpacing: "0.1em", color: "rgba(240,237,232,0.3)", fontFamily: "'DM Mono', monospace" }}>{CASE_STUDIES.length} case studies</span>
+            <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.teal, fontFamily: FONTS.mono }}>Selected work</span>
+            <span style={{ fontSize: "10px", letterSpacing: "0.1em", color: "rgba(240,237,232,0.3)", fontFamily: FONTS.mono }}>{CASE_STUDIES.length} case studies</span>
           </div>
           <Link to="/work" style={{
             color: "rgba(240,237,232,0.4)", fontSize: "11px", letterSpacing: "0.15em",
-            textTransform: "uppercase", fontFamily: "'DM Mono', monospace",
+            textTransform: "uppercase", fontFamily: FONTS.mono,
             transition: "color 0.2s", textDecoration: "none", display: "inline-block",
           }}
-            onMouseEnter={(e) => e.target.style.color = "#FF5C1A"}
+            onMouseEnter={(e) => e.target.style.color = COLORS.orange}
             onMouseLeave={(e) => e.target.style.color = "rgba(240,237,232,0.4)"}>
             View all →
           </Link>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))", gap: "1px", background: "rgba(240,237,232,0.06)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(380px, 1fr))", gap: "1px", background: "rgba(240,237,232,0.06)" }}>
           {CASE_STUDIES.map((cs) => (
             <CaseStudyCard key={cs.id} cs={cs} hovered={hoveredCard === cs.id} onHover={() => setHoveredCard(cs.id)} onLeave={() => setHoveredCard(null)} />
           ))}
-
         </div>
       </section>
 
       {/* ABOUT TEASER */}
-      <section style={{ padding: "80px 48px 120px", position: "relative", zIndex: 1, borderTop: "0.5px solid rgba(240,237,232,0.08)" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start", maxWidth: "1100px" }}>
+      <section style={{ padding: "80px 48px 120px", position: "relative", zIndex: 1, borderTop: `0.5px solid ${COLORS.border}` }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "80px", alignItems: "start", maxWidth: "1200px" }}>
           <div>
-            <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#FF5C1A", fontFamily: "'DM Mono', monospace", display: "block", marginBottom: "24px" }}>About</span>
-            <h2 style={{ fontSize: "clamp(22px, 3vw, 40px)", fontWeight: "400", lineHeight: 1.2, margin: "0 0 24px", letterSpacing: "-0.02em", fontFamily: "'DM Mono', monospace" }}>
-              12 years.<br />No handoffs.<br />No gap.
+            <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.orange, fontFamily: FONTS.mono, display: "block", marginBottom: "24px" }}>About</span>
+            <h2 style={{ fontSize: "clamp(32px, 4.5vw, 56px)", fontWeight: 400, lineHeight: 1.05, margin: "0 0 24px", letterSpacing: "-0.025em", fontFamily: FONTS.display }}>
+              12 years.<br />
+              <em style={{ color: COLORS.teal, fontStyle: "italic", fontWeight: 400 }}>No handoffs.</em><br />
+              No gap.
             </h2>
           </div>
           <div>
-            <p style={{ fontSize: "15px", color: "rgba(240,237,232,0.55)", lineHeight: 1.8, margin: "0 0 16px", fontFamily: "'DM Mono', monospace" }}>
+            <p style={{ fontSize: "17px", color: "rgba(240,237,232,0.7)", lineHeight: 1.65, margin: "0 0 20px", fontFamily: FONTS.body, fontWeight: 300 }}>
               Senior marketing leader across FMCG, hypergrowth tech and agencies. Most recently leading integrated marketing communications across Coca-Cola's Stills portfolio for ASEAN and South Pacific.
             </p>
-            <p style={{ fontSize: "15px", color: "rgba(240,237,232,0.55)", lineHeight: 1.8, margin: "0 0 32px", fontFamily: "'DM Mono', monospace" }}>
+            <p style={{ fontSize: "17px", color: "rgba(240,237,232,0.7)", lineHeight: 1.65, margin: "0 0 36px", fontFamily: FONTS.body, fontWeight: 300 }}>
               I build things as well as brief them — from CRM architecture to production model redesigns to AI-enabled creative validation. Strategy and execution, without the gap.
             </p>
             <Link to="/about" style={{
-              color: "#00C4B4", fontSize: "11px",
+              color: COLORS.teal, fontSize: "11px",
               letterSpacing: "0.18em", textTransform: "uppercase", cursor: "pointer",
-              fontFamily: "'DM Mono', monospace", transition: "color 0.2s",
+              fontFamily: FONTS.mono, transition: "color 0.2s",
               textDecoration: "none", display: "inline-block",
             }}
-              onMouseEnter={(e) => e.target.style.color = "#FF5C1A"}
-              onMouseLeave={(e) => e.target.style.color = "#00C4B4"}>
+              onMouseEnter={(e) => e.target.style.color = COLORS.orange}
+              onMouseLeave={(e) => e.target.style.color = COLORS.teal}>
               Full story →
             </Link>
           </div>
@@ -267,19 +280,19 @@ export default function TKPortfolio() {
       </section>
 
       <footer style={{
-        padding: "32px 48px", borderTop: "0.5px solid rgba(240,237,232,0.08)",
+        padding: "32px 48px", borderTop: `0.5px solid ${COLORS.border}`,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         position: "relative", zIndex: 1,
       }}>
-        <span style={{ fontSize: "11px", color: "rgba(240,237,232,0.2)", fontFamily: "'DM Mono', monospace", letterSpacing: "0.1em" }}>Trisha Kuek · {new Date().getFullYear()}</span>
+        <span style={{ fontSize: "11px", color: "rgba(240,237,232,0.2)", fontFamily: FONTS.mono, letterSpacing: "0.1em" }}>Trisha Kuek · {new Date().getFullYear()}</span>
         <div style={{ display: "flex", gap: "32px" }}>
           {[["Email", "mailto:trishakuek@gmail.com"], ["LinkedIn", "https://linkedin.com/in/trishakuek"]].map(([label, href]) => (
             <a key={label} href={href} {...(label === "LinkedIn" ? { target: "_blank", rel: "noopener noreferrer" } : {})} style={{
               fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase",
               color: "rgba(240,237,232,0.25)", textDecoration: "none",
-              fontFamily: "'DM Mono', monospace", transition: "color 0.2s",
+              fontFamily: FONTS.mono, transition: "color 0.2s",
             }}
-              onMouseEnter={(e) => e.target.style.color = "#00C4B4"}
+              onMouseEnter={(e) => e.target.style.color = COLORS.teal}
               onMouseLeave={(e) => e.target.style.color = "rgba(240,237,232,0.25)"}>
               {label}
             </a>
@@ -288,7 +301,7 @@ export default function TKPortfolio() {
       </footer>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+        ${FONT_IMPORT}
         * { box-sizing: border-box; margin: 0; padding: 0; }
         @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.8; } }
         ::-webkit-scrollbar { width: 4px; }
@@ -301,61 +314,111 @@ export default function TKPortfolio() {
 }
 
 function CaseStudyCard({ cs, hovered, onHover, onLeave }) {
+  const thumb = THUMBS[cs.slug];
   return (
     <Link to={`/work/${cs.slug}`} style={{ display: "block", textDecoration: "none", color: "inherit" }}>
-    <div onMouseEnter={onHover} onMouseLeave={onLeave} style={{
-      background: hovered ? "#1A1A1A" : "#0D0D0D", padding: "40px",
-      cursor: "pointer", transition: "background 0.25s ease",
-      position: "relative", overflow: "hidden", minHeight: "240px",
-      display: "flex", flexDirection: "column", justifyContent: "space-between",
-    }}>
-      <div style={{
-        position: "absolute", top: 0, left: 0,
-        width: hovered ? "100%" : "0%", height: "1px",
-        background: "linear-gradient(to right, #00C4B4, transparent)",
-        transition: "width 0.4s ease",
-      }} />
-
-      <div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px" }}>
-          <span style={{
-            fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase",
-            color: hovered ? "#00C4B4" : "rgba(240,237,232,0.3)",
-            fontFamily: "'DM Mono', monospace", transition: "color 0.25s",
-          }}>{cs.category}</span>
-          <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-            {cs.award && (
-              <span style={{
-                fontSize: "8px", letterSpacing: "0.12em", textTransform: "uppercase",
-                color: "#FF5C1A", border: "0.5px solid #FF5C1A",
-                padding: "2px 8px", fontFamily: "'DM Mono', monospace",
-              }}>{cs.award}</span>
-            )}
-            <span style={{ fontSize: "10px", color: "rgba(240,237,232,0.2)", fontFamily: "'DM Mono', monospace" }}>{cs.year}</span>
-          </div>
+      <div onMouseEnter={onHover} onMouseLeave={onLeave} style={{
+        background: hovered ? COLORS.surface : COLORS.bg,
+        cursor: "pointer", transition: "background 0.25s ease",
+        position: "relative", overflow: "hidden",
+        display: "flex", flexDirection: "column",
+      }}>
+        {/* Thumbnail */}
+        <div style={{
+          aspectRatio: "16/10",
+          background: thumb?.type === "gradient" ? thumb.bg : COLORS.bg,
+          backgroundImage: thumb?.type === "image" ? `url(${thumb.src})` : undefined,
+          backgroundSize: "cover", backgroundPosition: "center",
+          position: "relative", overflow: "hidden",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          borderBottom: `0.5px solid rgba(240,237,232,0.08)`,
+        }}>
+          {thumb?.type === "gradient" && (
+            <div style={{ textAlign: "center", padding: "20px" }}>
+              <div style={{
+                fontSize: "clamp(36px, 5vw, 64px)", fontWeight: 600,
+                color: thumb.fg, fontFamily: FONTS.display, letterSpacing: "-0.02em",
+                lineHeight: 1, fontStyle: "italic",
+              }}>{thumb.label}</div>
+              <div style={{
+                fontSize: "10px", letterSpacing: "0.22em",
+                color: thumb.fg, opacity: 0.7, fontFamily: FONTS.mono,
+                marginTop: "12px",
+              }}>{thumb.sub}</div>
+            </div>
+          )}
+          {/* Hover overlay */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: hovered ? "rgba(13,13,13,0.15)" : "rgba(13,13,13,0)",
+            transition: "background 0.3s ease",
+          }} />
         </div>
 
-        <h3 style={{
-          fontSize: "18px", fontWeight: "500", lineHeight: 1.3, marginBottom: "12px",
-          letterSpacing: "-0.01em", fontFamily: "'DM Mono', monospace",
-          color: hovered ? "#F0EDE8" : "rgba(240,237,232,0.85)", transition: "color 0.25s",
-        }}>{cs.title}</h3>
+        {/* Content */}
+        <div style={{ padding: "32px 36px 36px", position: "relative" }}>
+          <div style={{
+            position: "absolute", top: 0, left: 0,
+            width: hovered ? "100%" : "0%", height: "1px",
+            background: `linear-gradient(to right, ${COLORS.teal}, transparent)`,
+            transition: "width 0.4s ease",
+          }} />
 
-        <p style={{ fontSize: "13px", color: "rgba(240,237,232,0.35)", lineHeight: 1.65, fontFamily: "'DM Mono', monospace", maxWidth: "340px" }}>{cs.description}</p>
-      </div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
+            <span style={{
+              fontSize: "9px", letterSpacing: "0.22em", textTransform: "uppercase",
+              color: hovered ? COLORS.teal : "rgba(240,237,232,0.35)",
+              fontFamily: FONTS.mono, transition: "color 0.25s",
+            }}>{cs.category}</span>
+            <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+              {cs.award && (
+                <span style={{
+                  fontSize: "8px", letterSpacing: "0.12em", textTransform: "uppercase",
+                  color: COLORS.orange, border: `0.5px solid ${COLORS.orange}`,
+                  padding: "2px 8px", fontFamily: FONTS.mono,
+                }}>{cs.award}</span>
+              )}
+              <span style={{ fontSize: "10px", color: "rgba(240,237,232,0.25)", fontFamily: FONTS.mono }}>{cs.year}</span>
+            </div>
+          </div>
 
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "28px", paddingTop: "20px", borderTop: "0.5px solid rgba(240,237,232,0.07)" }}>
-        <span style={{
-          fontSize: "11px", color: hovered ? "#00C4B4" : "rgba(240,237,232,0.35)",
-          fontFamily: "'DM Mono', monospace", letterSpacing: "0.02em", transition: "color 0.25s",
-        }}>{cs.result}</span>
-        <span style={{
-          fontSize: "16px", color: hovered ? "#FF5C1A" : "rgba(240,237,232,0.2)",
-          transition: "color 0.25s, transform 0.25s",
-          transform: hovered ? "translateX(4px)" : "translateX(0)", display: "inline-block",
-        }}>→</span>
+          {/* Hero stat — leads */}
+          <div style={{
+            fontSize: "clamp(22px, 2.4vw, 30px)", fontWeight: 500, lineHeight: 1.15,
+            color: hovered ? COLORS.text : "rgba(240,237,232,0.92)",
+            fontFamily: FONTS.display, letterSpacing: "-0.02em",
+            marginBottom: "4px", transition: "color 0.25s",
+          }}>{cs.heroStat}</div>
+          <div style={{
+            fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase",
+            color: hovered ? COLORS.teal : "rgba(240,237,232,0.4)",
+            fontFamily: FONTS.mono, marginBottom: "20px", transition: "color 0.25s",
+          }}>{cs.heroStatSub}</div>
+
+          <h3 style={{
+            fontSize: "14px", fontWeight: 500, lineHeight: 1.4, marginBottom: "10px",
+            fontFamily: FONTS.body,
+            color: "rgba(240,237,232,0.8)",
+          }}>{cs.title}</h3>
+
+          <p style={{
+            fontSize: "13.5px", color: "rgba(240,237,232,0.5)", lineHeight: 1.6,
+            fontFamily: FONTS.body, fontWeight: 300, maxWidth: "380px",
+          }}>{cs.description}</p>
+
+          <div style={{
+            marginTop: "24px", paddingTop: "16px",
+            borderTop: `0.5px solid rgba(240,237,232,0.07)`,
+            display: "flex", alignItems: "center", justifyContent: "flex-end",
+          }}>
+            <span style={{
+              fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase",
+              color: hovered ? COLORS.orange : "rgba(240,237,232,0.4)",
+              fontFamily: FONTS.mono, transition: "color 0.25s",
+            }}>Read case study <span style={{ marginLeft: "8px", display: "inline-block", transform: hovered ? "translateX(4px)" : "translateX(0)", transition: "transform 0.25s" }}>→</span></span>
+          </div>
+        </div>
       </div>
-    </div>
     </Link>
   );
 }
