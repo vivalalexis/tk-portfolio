@@ -157,8 +157,9 @@ export default function TKPortfolio() {
           opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)",
           transition: "opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s",
         }}>
-          Strategic enough to shape the brief.<br />
-          Creative enough to{" "}
+          Strategic enough to<br />
+          <span style={{ whiteSpace: "nowrap" }}>shape the brief.</span><br />
+          Creative enough to<br />
           <em style={{ color: COLORS.orange, fontStyle: "italic", fontWeight: 400, whiteSpace: "nowrap" }}>make it land</em>.
         </h1>
 
