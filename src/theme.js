@@ -30,11 +30,9 @@ export const THUMBS = {
     alt: "Animal Crossing x Deliveroo island",
   },
   "keri-pulp-friction": {
-    type: "gradient",
-    bg: "linear-gradient(135deg, #E8541C 0%, #F49A1E 100%)",
-    label: "KERI",
-    sub: "PULP FRICTION",
-    fg: "#FFF7EC",
+    type: "image",
+    src: "https://i.ytimg.com/vi/piovBrm6AKE/maxresdefault.jpg",
+    alt: "Keri Pulp Friction campaign — New Zealand",
   },
   "wilkins": {
     type: "gradient",
@@ -51,10 +49,8 @@ export const THUMBS = {
     fg: "#F0EDE8",
   },
   "coke-music-promo": {
-    type: "gradient",
-    bg: "linear-gradient(135deg, #C8102E 0%, #7B0A1E 100%)",
-    label: "COKE",
-    sub: "MUSIC · 3 CYCLES",
-    fg: "#FFF1E6",
+    type: "image",
+    src: "https://i.ytimg.com/vi/6oR9vJp5qSg/maxresdefault.jpg",
+    alt: "Coke Music Promo — K-POP tour campaign",
   },
 };

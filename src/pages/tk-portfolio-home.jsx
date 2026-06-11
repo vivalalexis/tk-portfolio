@@ -262,7 +262,7 @@ export default function TKPortfolio() {
           </div>
           <div>
             <p style={{ fontSize: "17px", color: "rgba(240,237,232,0.7)", lineHeight: 1.65, margin: "0 0 20px", fontFamily: FONTS.body, fontWeight: 300 }}>
-              Senior marketing leader across FMCG, hypergrowth tech and agencies. Most recently leading integrated marketing communications across Coca-Cola's Stills portfolio for ASEAN and South Pacific.
+              Senior marketing leader across FMCG, hypergrowth tech and agencies. Most recently led integrated marketing communications across Coca-Cola's Stills portfolio for ASEAN and South Pacific. Available now.
             </p>
             <p style={{ fontSize: "17px", color: "rgba(240,237,232,0.7)", lineHeight: 1.65, margin: "0 0 36px", fontFamily: FONTS.body, fontWeight: 300 }}>
               I build things as well as brief them — from CRM architecture to production model redesigns to AI-enabled creative validation. Strategy and execution, without the gap.

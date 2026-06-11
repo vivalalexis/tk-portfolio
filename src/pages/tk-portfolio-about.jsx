@@ -6,9 +6,9 @@ const CAREER = [
   {
     company: "The Coca-Cola Company",
     role: "Regional Senior Creative & Content Manager",
-    period: "Jul 2024 — Present",
+    period: "Jul 2024 — Apr 2026",
     location: "Sydney, AU",
-    detail: "Leading regional creative and content strategy across ASEAN and South Pacific for Juice, Dairy and Hydration portfolios. Held expanded dual-role responsibility (Apr–Jun 2025) overseeing Hydration category strategy alongside core content leadership. Led Keri Pulp Friction — Keri to #1 juice brand in New Zealand (40% monthly vol share, first time in brand history). Redesigned production model from sequential to parallel workstreams — 70% agency cost savings, 3x asset output, 50% faster timelines.",
+    detail: "Led regional creative and content strategy across ASEAN and South Pacific for Juice, Dairy and Hydration portfolios. Held expanded dual-role responsibility (Apr–Jun 2025) overseeing Hydration category strategy alongside core content leadership. Led Keri Pulp Friction — Keri to #1 juice brand in New Zealand (40% monthly vol share, first time in brand history). Launched Keri Sparkling to #1 juice NPD in eight weeks (140% rate of sale vs still). Supported Wilkins to #1 water brand in the Philippines (23.1% vol share, +7pts vs prior year). Redesigned production model from sequential to parallel workstreams — 70% agency cost savings, 3x asset output, 50% faster timelines.",
     tags: ["IMC", "Creative Strategy", "FMCG", "ASEAN & South Pacific"],
   },
   {
@@ -71,7 +71,7 @@ const NUMBERS = [
   { stat: "4M+", label: "first-party data captures, Coke Music Promo" },
   { stat: "70%", label: "agency cost savings via production model redesign" },
   { stat: "$1.2M", label: "earned media, Animal Crossing x Deliveroo — $0 spend" },
-  { stat: "+32%", label: "Keri value growth, Pulp Friction NZ" },
+  { stat: "8 wks", label: "Keri Sparkling to #1 juice NPD — 140% rate of sale vs still" },
   { stat: "3x", label: "CRM output volume, Braze rebuild" },
 ];
 
@@ -146,7 +146,7 @@ export default function TKAbout() {
             opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease 0.2s",
           }}>
             <span style={{ fontSize: "10px", letterSpacing: "0.22em", textTransform: "uppercase", color: COLORS.orange, fontFamily: FONTS.mono }}>About</span>
-            <span style={{ fontSize: "10px", letterSpacing: "0.1em", color: "rgba(240,237,232,0.3)", fontFamily: FONTS.mono }}>Sydney, AU · Full working rights</span>
+            <span style={{ fontSize: "10px", letterSpacing: "0.1em", color: "rgba(240,237,232,0.3)", fontFamily: FONTS.mono }}>Sydney, AU · Full working rights · <span style={{ color: COLORS.teal }}>Available now</span></span>
           </div>
         </div>
 

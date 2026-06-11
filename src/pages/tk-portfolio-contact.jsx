@@ -100,7 +100,7 @@ export default function TKContact() {
               fontSize: "clamp(15px, 1.5vw, 19px)", color: "rgba(240,237,232,0.65)",
               lineHeight: 1.65, maxWidth: "560px", fontFamily: FONTS.body, fontWeight: 300,
             }}>
-              Open to senior marketing, growth, and integrated marketing roles. Based in Sydney — available for in-person, hybrid, and remote.
+              Available now. Open to senior marketing, growth, and integrated marketing roles. Based in Sydney — available for in-person, hybrid, and remote.
             </p>
           </div>
         </div>
@@ -166,7 +166,7 @@ export default function TKContact() {
               fontSize: "13px", color: "rgba(240,237,232,0.4)",
               fontFamily: FONTS.mono, lineHeight: 1.8, maxWidth: "460px", letterSpacing: "0.02em",
             }}>
-              Based in Sydney, Australia. Available for roles across Sydney, remote, and hybrid. APAC timezone preferred but not required.
+              Based in Sydney, Australia. Available immediately — no notice period. Open to roles across Sydney, remote, and hybrid. APAC timezone preferred but not required.
             </p>
           </div>
         </div>

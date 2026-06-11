@@ -37,6 +37,7 @@ export default function CaseStudyWilkins() {
           { label: "In-market co-execution", detail: "Worked closely alongside Philippines marketing and commercial teams — building the brief and execution together to ensure local market reality was embedded from the start." },
           { label: "Production model", detail: "Redesigned production workflows to reduce cost and timeline, freeing up budget reallocation to high-impact in-market activation without increasing total investment." },
         ]} />
+        <ProductionDiagram loaded={loaded} />
         <ResultsGrid loaded={loaded} results={RESULTS} accentColor="#FF5C1A" />
         <Reflection loaded={loaded} accentColor="#00C4B4" quote="Market leadership isn't won in a single campaign. It's built by making better decisions than your competitors across every spend allocation, every brief, every production cycle — until the cumulative advantage becomes structural." />
         <BackButton loaded={loaded} />
@@ -148,6 +149,73 @@ function RoleBlock({ item, accentColor }) {
       <div style={{ position: "absolute", top: 0, left: 0, width: hovered ? "100%" : "0%", height: "1px", background: `linear-gradient(to right, ${accentColor}, transparent)`, transition: "width 0.4s ease" }} />
       <p style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: hovered ? accentColor : "rgba(240,237,232,0.3)", fontFamily: "'DM Mono', monospace", marginBottom: "16px", transition: "color 0.25s" }}>{item.label}</p>
       <p style={{ fontSize: "13px", color: "rgba(240,237,232,0.45)", lineHeight: 1.75, fontFamily: "'DM Mono', monospace" }}>{item.detail}</p>
+    </div>
+  );
+}
+
+function ProductionDiagram({ loaded }) {
+  const seqStages = ["Brief", "Creative", "Review", "Production", "Revision", "Delivery"];
+  const lanes = [
+    { label: "AV production", color: "#00C4B4" },
+    { label: "Stills & digital", color: "#00C4B4" },
+    { label: "Review & revision", color: "#FF5C1A" },
+  ];
+  const stats = [
+    { stat: "70%", label: "agency cost savings" },
+    { stat: "3x", label: "AV & still assets — same budget" },
+    { stat: "50%", label: "faster production timelines" },
+  ];
+  const boxStyle = { border: "0.5px solid rgba(240,237,232,0.18)", padding: "10px 14px", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(240,237,232,0.5)", fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" };
+  return (
+    <div style={{ padding: "0 48px", marginBottom: "100px", opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 0.65s" }}>
+      <div style={{ maxWidth: "980px" }}>
+        <div style={{ borderTop: "0.5px solid rgba(240,237,232,0.1)", paddingTop: "32px", marginBottom: "40px" }}>
+          <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#FF5C1A", fontFamily: "'DM Mono', monospace" }}>The redesign</span>
+        </div>
+
+        {/* BEFORE — sequential */}
+        <div style={{ border: "0.5px solid rgba(240,237,232,0.08)", padding: "32px", marginBottom: "1px", background: "#0D0D0D" }}>
+          <p style={{ fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(240,237,232,0.3)", fontFamily: "'DM Mono', monospace", marginBottom: "24px" }}>Before — sequential</p>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+            {seqStages.map((stage, i) => (
+              <div key={stage} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <div style={boxStyle}>{stage}</div>
+                {i < seqStages.length - 1 && <span style={{ color: "rgba(240,237,232,0.25)", fontSize: "12px", fontFamily: "'DM Mono', monospace" }}>→</span>}
+              </div>
+            ))}
+          </div>
+          <p style={{ fontSize: "11px", color: "rgba(240,237,232,0.3)", fontFamily: "'DM Mono', monospace", marginTop: "20px", letterSpacing: "0.04em", lineHeight: 1.6 }}>Every stage waits for the one before it. Cost and time compound at each gate.</p>
+        </div>
+
+        {/* AFTER — parallel */}
+        <div style={{ border: "0.5px solid rgba(240,237,232,0.08)", padding: "32px", background: "#0D0D0D" }}>
+          <p style={{ fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#00C4B4", fontFamily: "'DM Mono', monospace", marginBottom: "24px" }}>After — parallel workstreams</p>
+          <div style={{ display: "flex", alignItems: "stretch", gap: "8px" }}>
+            <div style={{ ...boxStyle, display: "flex", alignItems: "center", borderColor: "rgba(0,196,180,0.4)", color: "#00C4B4" }}>Brief</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px", flex: 1, minWidth: 0 }}>
+              {lanes.map((lane) => (
+                <div key={lane.label} style={{ display: "flex", alignItems: "center", border: "0.5px solid rgba(240,237,232,0.12)", padding: "10px 14px", position: "relative", overflow: "hidden" }}>
+                  <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "2px", background: lane.color }} />
+                  <span style={{ fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(240,237,232,0.5)", fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{lane.label}</span>
+                  <span style={{ marginLeft: "auto", color: "rgba(240,237,232,0.2)", fontSize: "11px", fontFamily: "'DM Mono', monospace", paddingLeft: "12px" }}>──────→</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ ...boxStyle, display: "flex", alignItems: "center", borderColor: "rgba(0,196,180,0.4)", color: "#00C4B4" }}>Delivery</div>
+          </div>
+          <p style={{ fontSize: "11px", color: "rgba(240,237,232,0.3)", fontFamily: "'DM Mono', monospace", marginTop: "20px", letterSpacing: "0.04em", lineHeight: 1.6 }}>Production, feedback, and revision run simultaneously across asset types — without reducing review rigour. Now the established way of working for the Wilkins portfolio.</p>
+        </div>
+
+        {/* IMPACT STRIP */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: "rgba(240,237,232,0.06)", marginTop: "1px" }}>
+          {stats.map((s) => (
+            <div key={s.stat} style={{ background: "#0D0D0D", padding: "28px 32px" }}>
+              <p style={{ fontSize: "clamp(22px, 2.5vw, 34px)", fontWeight: "500", letterSpacing: "-0.03em", color: "#00C4B4", fontFamily: FONTS.display, margin: "0 0 8px" }}>{s.stat}</p>
+              <p style={{ fontSize: "10px", color: "rgba(240,237,232,0.35)", fontFamily: "'DM Mono', monospace", lineHeight: 1.6, letterSpacing: "0.04em" }}>{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

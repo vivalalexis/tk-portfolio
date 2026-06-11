@@ -87,6 +87,8 @@ export default function CaseStudyCRM() {
           </div>
         </div>
 
+        <LifecycleDiagram loaded={loaded} />
+
         <div style={{ padding: "0 48px", marginBottom: "100px", opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 0.6s" }}>
           <div style={{ maxWidth: "980px" }}>
             <div style={{ borderTop: "0.5px solid rgba(240,237,232,0.1)", paddingTop: "32px", marginBottom: "40px" }}>
@@ -150,6 +152,51 @@ export default function CaseStudyCRM() {
         ::-webkit-scrollbar-thumb { background: rgba(240,237,232,0.15); }
         :focus-visible { outline: 2px solid #00C4B4; outline-offset: 2px; }
       `}</style>
+    </div>
+  );
+}
+
+function LifecycleDiagram({ loaded }) {
+  const stages = [
+    { stage: "First order", journey: "Onboarding journey · welcome triggers", color: "#00C4B4" },
+    { stage: "Active", journey: "Engagement loops · gamified sequences", color: "#00C4B4" },
+    { stage: "At-risk", journey: "Behaviour triggers · re-engagement", color: "#FF5C1A" },
+    { stage: "Lapsed", journey: "Win-back journey · closes the loop", color: "#FF5C1A" },
+  ];
+  return (
+    <div style={{ padding: "0 48px", marginBottom: "100px", opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 0.55s" }}>
+      <div style={{ maxWidth: "980px" }}>
+        <div style={{ borderTop: "0.5px solid rgba(240,237,232,0.1)", paddingTop: "32px", marginBottom: "40px" }}>
+          <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#00C4B4", fontFamily: "'DM Mono', monospace" }}>The architecture</span>
+        </div>
+
+        {/* LIFECYCLE STAGES */}
+        <div style={{ border: "0.5px solid rgba(240,237,232,0.08)", padding: "32px", background: "#0D0D0D" }}>
+          <p style={{ fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(240,237,232,0.3)", fontFamily: "'DM Mono', monospace", marginBottom: "24px" }}>Consumer lifecycle — mapped from zero in Braze</p>
+          <div style={{ display: "flex", alignItems: "stretch", gap: "8px", flexWrap: "wrap" }}>
+            {stages.map((s, i) => (
+              <div key={s.stage} style={{ display: "flex", alignItems: "stretch", gap: "8px", flex: "1 1 180px" }}>
+                <div style={{ border: "0.5px solid rgba(240,237,232,0.14)", padding: "16px", position: "relative", overflow: "hidden", flex: 1, minWidth: 0 }}>
+                  <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "2px", background: s.color }} />
+                  <p style={{ fontSize: "11px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(240,237,232,0.7)", fontFamily: "'DM Mono', monospace", marginBottom: "10px" }}>{s.stage}</p>
+                  <p style={{ fontSize: "10px", color: "rgba(240,237,232,0.35)", fontFamily: "'DM Mono', monospace", lineHeight: 1.6, letterSpacing: "0.02em" }}>{s.journey}</p>
+                </div>
+                {i < stages.length - 1 && <span style={{ alignSelf: "center", color: "rgba(240,237,232,0.25)", fontSize: "12px", fontFamily: "'DM Mono', monospace" }}>→</span>}
+              </div>
+            ))}
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "20px" }}>
+            <span style={{ color: "#00C4B4", fontSize: "14px", fontFamily: "'DM Mono', monospace" }}>↺</span>
+            <p style={{ fontSize: "11px", color: "rgba(240,237,232,0.3)", fontFamily: "'DM Mono', monospace", letterSpacing: "0.04em", lineHeight: 1.6 }}>Win-back re-enters the lifecycle. Modular content with A/B testing at every stage — every send informs the next.</p>
+          </div>
+        </div>
+
+        {/* PUNCH CARD CALLOUT */}
+        <div style={{ border: "0.5px solid rgba(255,92,26,0.3)", padding: "24px 32px", marginTop: "1px", background: "#0D0D0D", display: "flex", alignItems: "baseline", gap: "20px", flexWrap: "wrap" }}>
+          <span style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#FF5C1A", fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" }}>Loyalty punch card</span>
+          <p style={{ fontSize: "11px", color: "rgba(240,237,232,0.4)", fontFamily: "'DM Mono', monospace", lineHeight: 1.7, letterSpacing: "0.02em", flex: "1 1 300px", margin: 0 }}>Journey logic, behaviour triggers, progress comms, automated reward fulfilment — engineered entirely inside this architecture. Zero product features required.</p>
+        </div>
+      </div>
     </div>
   );
 }
