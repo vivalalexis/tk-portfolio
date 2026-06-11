@@ -53,4 +53,57 @@ export const THUMBS = {
     src: "https://i.ytimg.com/vi/6oR9vJp5qSg/maxresdefault.jpg",
     alt: "Coke Music Promo — K-POP tour campaign",
   },
+  "coca-cola-creations": {
+    type: "gradient",
+    bg: "linear-gradient(135deg, #2D1B4E 0%, #B23A8F 100%)",
+    label: "Y3000",
+    sub: "COCA-COLA CREATIONS",
+    fg: "#F6E9FF",
+  },
+  "kwave-crisis": {
+    type: "image",
+    src: "https://i.ytimg.com/vi/t6bBDAlpQZs/maxresdefault.jpg",
+    alt: "Coca-Cola K-Wave — Like Magic music video",
+  },
+  "coke-frozen": {
+    type: "gradient",
+    bg: "linear-gradient(135deg, #7B0A1E 0%, #C8102E 55%, #6EC9E8 100%)",
+    label: "FROZEN",
+    sub: "SUMMER'S BETTER FROZEN",
+    fg: "#FFF1E6",
+  },
+  "deliveroo-value-meals": {
+    type: "image",
+    src: "https://i.ytimg.com/vi/Cw4n3k3-prQ/maxresdefault.jpg",
+    alt: "Deliveroo $12 Value Meals campaign",
+  },
+  "lazada-mothers-day": {
+    type: "image",
+    src: "https://i.ytimg.com/vi/R8TTWD279HY/maxresdefault.jpg",
+    alt: "Lazada Mother's Day rap campaign",
+  },
+  "lazada-kpo": {
+    type: "image",
+    src: "https://i.ytimg.com/vi/5fls5ssZkdo/maxresdefault.jpg",
+    alt: "Lazada K.PO Singlish smart speaker",
+  },
+  "lazada-birthday": {
+    type: "image",
+    src: "https://i.ytimg.com/vi/z-YU1TiRBr0/maxresdefault.jpg",
+    alt: "Lazada Birthday Festival campaign",
+  },
+  "pawcast": {
+    type: "gradient",
+    bg: "linear-gradient(135deg, #0F3B38 0%, #2E6F40 100%)",
+    label: "PAWCAST",
+    sub: "AI BUILD · ML ENGINE",
+    fg: "#EAF7EE",
+  },
+  "ai-show-trailer": {
+    type: "gradient",
+    bg: "linear-gradient(135deg, #111111 0%, #3A3A52 100%)",
+    label: "1 DAY",
+    sub: "AI SHOW TRAILER · 60 SEC",
+    fg: "#F0EDE8",
+  },
 };
