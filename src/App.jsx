@@ -17,6 +17,13 @@ import CaseStudyLazadaKPO from './pages/tk-casestudy-lazada-kpo';
 import CaseStudyLazadaBirthday from './pages/tk-casestudy-lazada-birthday';
 import CaseStudyPawcast from './pages/tk-casestudy-pawcast';
 import CaseStudyAIReel from './pages/tk-casestudy-aireel';
+import CaseStudyWilkinsCircleOfTrust from './pages/tk-casestudy-wilkins-circle-of-trust';
+import CaseStudyProductionModel from './pages/tk-casestudy-production-model';
+import CaseStudyAIShelfTesting from './pages/tk-casestudy-ai-shelf-testing';
+import CaseStudyWaterTabletPilot from './pages/tk-casestudy-water-tablet-pilot';
+import CaseStudyRedThreadBlueprint from './pages/tk-casestudy-red-thread-blueprint';
+import CaseStudySportsEdgeEngine from './pages/tk-casestudy-sports-edge-engine';
+import CaseStudyGhostMode from './pages/tk-casestudy-ghost-mode';
 
 export default function App() {
   return (
@@ -40,6 +47,13 @@ export default function App() {
         <Route path="/work/lazada-birthday" element={<CaseStudyLazadaBirthday />} />
         <Route path="/work/pawcast" element={<CaseStudyPawcast />} />
         <Route path="/work/ai-show-trailer" element={<CaseStudyAIReel />} />
+        <Route path="/work/wilkins-circle-of-trust" element={<CaseStudyWilkinsCircleOfTrust />} />
+        <Route path="/work/production-model" element={<CaseStudyProductionModel />} />
+        <Route path="/work/ai-shelf-testing" element={<CaseStudyAIShelfTesting />} />
+        <Route path="/work/water-tablet-pilot" element={<CaseStudyWaterTabletPilot />} />
+        <Route path="/work/red-thread-blueprint" element={<CaseStudyRedThreadBlueprint />} />
+        <Route path="/work/sports-edge-engine" element={<CaseStudySportsEdgeEngine />} />
+        <Route path="/work/ghost-mode" element={<CaseStudyGhostMode />} />
       </Routes>
     </BrowserRouter>
   );

@@ -37,6 +37,39 @@ const CASE_STUDIES = [
     slug: "wilkins",
   },
   {
+    id: 15,
+    title: "Wilkins Circle of Trust",
+    category: "Route-to-Market · B2B2C",
+    heroStat: "Trust, taken to the shelf",
+    heroStatSub: "23.1% vol share · barangay-to-sari-sari journey",
+    year: "2025",
+    award: null,
+    description: "Turned doctor-and-mother trust equity into a B2B2C operating system that ran from community health workers all the way to a sari-sari store sale.",
+    slug: "wilkins-circle-of-trust",
+  },
+  {
+    id: 16,
+    title: "Production Model Redesign",
+    category: "Production Model Design",
+    heroStat: "70% agency cost saved",
+    heroStatSub: "3× asset output · 50% faster timelines",
+    year: "2026",
+    award: null,
+    description: "Rebuilt a slow, sequential production model into parallel workstreams, fixing the scope conversation upstream instead of cutting the rate card.",
+    slug: "production-model",
+  },
+  {
+    id: 17,
+    title: "AI-Validated Visual Identity",
+    category: "Data & AI · Visual Identity",
+    heroStat: "Opinion → evidence",
+    heroStatSub: "Full transition redirected to phased rollout",
+    year: "2025",
+    award: null,
+    description: "Ran AI shelf-attention testing before production spend committed, and the data changed a region-wide packaging recommendation.",
+    slug: "ai-shelf-testing",
+  },
+  {
     id: 4,
     title: "CRM Architecture — Braze",
     category: "CRM & Lifecycle",
@@ -90,6 +123,17 @@ const CASE_STUDIES = [
     award: null,
     description: "One platform idea for the frozen range — a point-of-sale format given brand-level storytelling.",
     slug: "coke-frozen",
+  },
+  {
+    id: 18,
+    title: "Water Purification Tablet Pilot",
+    category: "Intrapreneurship",
+    heroStat: "$46M opportunity modelled",
+    heroStatSub: "12-mo Metro Manila pilot · $150K seed",
+    year: "2025",
+    award: null,
+    description: "Paired water access with commercial growth in the Philippines, built as a fundable pilot with an honest path from social impact to scale.",
+    slug: "water-tablet-pilot",
   },
   {
     id: 9,
@@ -156,6 +200,39 @@ const CASE_STUDIES = [
     award: null,
     description: "AI 10x'd the execution. Taste — choosing the one variation that works — is still the job.",
     slug: "ai-show-trailer",
+  },
+  {
+    id: 19,
+    title: "Red Thread Blueprint",
+    category: "AI Build · Product Venture",
+    heroStat: "A whole business, built solo",
+    heroStatSub: "Engine · brand · pricing · guardrails · 7 SKUs",
+    year: "2026",
+    award: null,
+    description: "A rigour-first destiny-reading product where deterministic libraries do all the math and AI only interprets. Brand, catalogue, and GTM designed end to end.",
+    slug: "red-thread-blueprint",
+  },
+  {
+    id: 20,
+    title: "Sports Edge Engine",
+    category: "AI Build · Side Project",
+    heroStat: "Built to doubt itself",
+    heroStatSub: "CLV validation · reliability scoring · 6-tab pipeline",
+    year: "2026",
+    award: null,
+    description: "Quant-trading principles applied to AU sports markets, where the real engineering was the governance: a system that distrusts its own outputs until evidence earns the confidence.",
+    slug: "sports-edge-engine",
+  },
+  {
+    id: 21,
+    title: "Ghost Mode V2",
+    category: "AI Build · Side Project",
+    heroStat: "Where not to use AI",
+    heroStatSub: "Deterministic teleprompter · rehearsal platform",
+    year: "2026",
+    award: null,
+    description: "An interview teleprompter built around a high-pressure flow, where deterministic navigation deliberately beats AI cleverness.",
+    slug: "ghost-mode",
   },
 ];
 
@@ -243,7 +320,7 @@ export default function TKWork() {
               fontSize: "17px", color: "rgba(240,237,232,0.6)", lineHeight: 1.65,
               fontFamily: FONTS.body, fontWeight: 300, maxWidth: "620px", margin: 0,
             }}>
-              Five projects across brand, growth, CRM, and regional IMC. Each led end-to-end — from strategy through production to in-market results.
+              Work across brand, growth, CRM, regional IMC, and hands-on AI builds. Each led end-to-end, from strategy through production to in-market results.
             </p>
           </div>
         </div>
