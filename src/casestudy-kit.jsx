@@ -100,6 +100,19 @@ export function VideoBlock({ id, title, caption }) {
   );
 }
 
+export function ImageBlock({ src, alt, caption, maxWidth = "1100px", accent = "#00C4B4" }) {
+  return (
+    <div style={{ padding: "0 48px", marginBottom: "100px" }}>
+      <div style={{ maxWidth }}>
+        <div style={{ border: "0.5px solid rgba(240,237,232,0.1)", overflow: "hidden", background: "#0A0A0A" }}>
+          <img src={src} alt={alt} loading="lazy" style={{ display: "block", width: "100%", height: "auto" }} />
+        </div>
+        {caption && <p style={{ fontSize: "10px", letterSpacing: "0.12em", color: "rgba(240,237,232,0.25)", fontFamily: FONTS.mono, marginTop: "12px", borderLeft: `2px solid ${accent}`, paddingLeft: "12px" }}>{caption}</p>}
+      </div>
+    </div>
+  );
+}
+
 export function SectionLabel({ children, accent = "#00C4B4" }) {
   return (
     <div style={{ borderTop: "0.5px solid rgba(240,237,232,0.1)", paddingTop: "32px", marginBottom: "40px" }}>

@@ -23,7 +23,6 @@ import CaseStudyAIShelfTesting from './pages/tk-casestudy-ai-shelf-testing';
 import CaseStudyWaterTabletPilot from './pages/tk-casestudy-water-tablet-pilot';
 import CaseStudyRedThreadBlueprint from './pages/tk-casestudy-red-thread-blueprint';
 import CaseStudySportsEdgeEngine from './pages/tk-casestudy-sports-edge-engine';
-import CaseStudyGhostMode from './pages/tk-casestudy-ghost-mode';
 
 export default function App() {
   return (
@@ -53,7 +52,6 @@ export default function App() {
         <Route path="/work/water-tablet-pilot" element={<CaseStudyWaterTabletPilot />} />
         <Route path="/work/red-thread-blueprint" element={<CaseStudyRedThreadBlueprint />} />
         <Route path="/work/sports-edge-engine" element={<CaseStudySportsEdgeEngine />} />
-        <Route path="/work/ghost-mode" element={<CaseStudyGhostMode />} />
       </Routes>
     </BrowserRouter>
   );

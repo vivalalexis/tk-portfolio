@@ -1,4 +1,4 @@
-import { Shell, BackBar, Hero, Narrative, RoleGrid, ResultsGrid, Reflection } from '../casestudy-kit.jsx';
+import { Shell, BackBar, Hero, Narrative, ImageBlock, RoleGrid, ResultsGrid, Reflection } from '../casestudy-kit.jsx';
 
 const RESULTS = [
   { stat: "CLV", label: "Closing line value as the validation signal, not short-term profit", highlight: true },
@@ -24,6 +24,18 @@ export default function CaseStudySportsEdgeEngine() {
           { accent: "#2E9E5B", text: "The part I'm proudest of is the evidence loop. A scheduled job captures closing odds around match start, measures CLV, and scores segment-level reliability that discounts raw edge when sample, calibration, or data quality is weak. Conservative five-tier stake guidance, and guidance versioning so historical recommendations are never silently rewritten." },
           { text: "Confidence should be earned, not asserted, and operational quality corrupts analytical conclusions if you don't monitor it. The same discipline maps straight onto marketing measurement: a result you can't trace to clean inputs and a stable method is a guess with a decimal point." },
         ]}
+      />
+      <ImageBlock
+        src="/tk-see-scan.jpg"
+        alt="Sports Edge Engine Scan tab — live odds across AU bookmakers with best price and implied probability"
+        caption="SCAN — LIVE ODDS ACROSS AU BOOKMAKERS, BEST PRICE AND IMPLIED PROBABILITY FLAGGED"
+        accent="#2E9E5B"
+      />
+      <ImageBlock
+        src="/tk-see-review.jpg"
+        alt="Sports Edge Engine Review tab — CLV, close capture, and reliability breakdowns by sport, odds band, and edge band"
+        caption="REVIEW — THE EVIDENCE LOOP: CLV, CLOSE CAPTURE, AND RELIABILITY SCORED BY SEGMENT"
+        accent="#2E9E5B"
       />
       <RoleGrid
         accent="#2E9E5B"

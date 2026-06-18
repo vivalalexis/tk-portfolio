@@ -1,4 +1,4 @@
-import { Shell, BackBar, Hero, Narrative, RoleGrid, ResultsGrid, Reflection } from '../casestudy-kit.jsx';
+import { Shell, BackBar, Hero, Narrative, ImageBlock, RoleGrid, ResultsGrid, Reflection } from '../casestudy-kit.jsx';
 
 const RESULTS = [
   { stat: "7 SKUs", label: "All generate end to end, from birth data to designed PDF", highlight: true },
@@ -24,6 +24,13 @@ export default function CaseStudyRedThreadBlueprint() {
           { accent: "#FF5C1A", text: "The report format is the brand. Cyanotype-blue blueprint covers, a drafting title block, charts drawn as architectural elevations and plans, and one continuous red thread as the only use of red. One rule, red appears only as the thread, generated the entire visual identity. I designed the catalogue, seven launch SKUs, and priced above market." },
           { text: "The hardest discipline wasn't the build, it was the bright lines: deciding what the AI is allowed to touch, then writing those rules down as constraints the system enforces. Deterministic math, a non-fatalistic writing contract, safety guardrails, a public-domain-only sourcing line, and validation gates from golden math tests to a guardrail red-team set." },
         ]}
+      />
+      <ImageBlock
+        src="/tk-rtb-interior.jpg"
+        alt="Red Thread Blueprint reading — printed pages showing the blueprint design system and red thread"
+        caption="GENERATED READING · BLUEPRINT COVERS, DRAFTING TITLE BLOCK, ONE CONTINUOUS RED THREAD"
+        maxWidth="640px"
+        accent="#3D7DD6"
       />
       <RoleGrid
         accent="#3D7DD6"

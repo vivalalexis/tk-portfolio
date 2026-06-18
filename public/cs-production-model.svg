@@ -1,0 +1,20 @@
+<svg width="680" height="425" viewBox="0 0 680 425" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="425" fill="#0D0D0D"/>
+  <text x="48" y="170" fill="#F0EDE8" font-family="Georgia, 'Times New Roman', serif" font-size="104" font-weight="500">70%</text>
+  <text x="50" y="202" fill="rgba(240,237,232,0.55)" font-family="'Courier New', monospace" font-size="14" letter-spacing="2">AGENCY COST SAVED</text>
+  <text x="50" y="226" fill="rgba(240,237,232,0.4)" font-family="'Courier New', monospace" font-size="13" letter-spacing="2">3× OUTPUT · 50% FASTER</text>
+
+  <text x="360" y="252" fill="rgba(240,237,232,0.4)" font-family="'Courier New', monospace" font-size="12" letter-spacing="2">BEFORE — SEQUENTIAL</text>
+  <rect x="360" y="266" width="58" height="32" rx="3" fill="none" stroke="rgba(240,237,232,0.3)" stroke-width="0.75"/>
+  <rect x="438" y="266" width="58" height="32" rx="3" fill="none" stroke="rgba(240,237,232,0.3)" stroke-width="0.75"/>
+  <rect x="516" y="266" width="58" height="32" rx="3" fill="none" stroke="rgba(240,237,232,0.3)" stroke-width="0.75"/>
+  <rect x="594" y="266" width="46" height="32" rx="3" fill="none" stroke="rgba(240,237,232,0.3)" stroke-width="0.75"/>
+  <path d="M420 282 L436 282" fill="none" stroke="rgba(240,237,232,0.35)" stroke-width="1.25"/>
+  <path d="M498 282 L514 282" fill="none" stroke="rgba(240,237,232,0.35)" stroke-width="1.25"/>
+  <path d="M576 282 L592 282" fill="none" stroke="rgba(240,237,232,0.35)" stroke-width="1.25"/>
+
+  <text x="360" y="334" fill="#FF5C1A" font-family="'Courier New', monospace" font-size="12" letter-spacing="2">AFTER — PARALLEL</text>
+  <rect x="360" y="348" width="280" height="20" rx="3" fill="#FF5C1A" opacity="0.9"/>
+  <rect x="360" y="372" width="280" height="20" rx="3" fill="#FF5C1A" opacity="0.62"/>
+  <rect x="360" y="396" width="280" height="20" rx="3" fill="#FF5C1A" opacity="0.4"/>
+</svg>

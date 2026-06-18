@@ -223,17 +223,6 @@ const CASE_STUDIES = [
     description: "Quant-trading principles applied to AU sports markets, where the real engineering was the governance: a system that distrusts its own outputs until evidence earns the confidence.",
     slug: "sports-edge-engine",
   },
-  {
-    id: 21,
-    title: "Ghost Mode V2",
-    category: "AI Build · Side Project",
-    heroStat: "Where not to use AI",
-    heroStatSub: "Deterministic teleprompter · rehearsal platform",
-    year: "2026",
-    award: null,
-    description: "An interview teleprompter built around a high-pressure flow, where deterministic navigation deliberately beats AI cleverness.",
-    slug: "ghost-mode",
-  },
 ];
 
 const NAV_PATH = { Work: "/work", About: "/about", Contact: "/contact" };
